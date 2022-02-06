@@ -5,4 +5,13 @@
     <string name="profile">Profile</string>
     <string name="start_new_case">Start new case</string>
     <string name="history">History</string>
+    <string name="search__">Search...</string>
+    <string name="recent">Recent</string>
+    <string name="email">email</string>
+    <string name="email__">Email:</string>
+    <string name="age__">Age:</string>
+    <string name="skin_color__">Skin Color:</string>
+    <string name="skin_type__">Skin Type:</string>
+    <string name="choose_an_image">Choose an image</string>
+    <string name="select_or_take_an_image">Select or take an image</string>
 </resources>

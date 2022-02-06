@@ -20,4 +20,9 @@
         android:name="graduation.fcm.dermai.presentation.main.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="graduation.fcm.dermai.presentation.main.scan.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" />
 </navigation>
