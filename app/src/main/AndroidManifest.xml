@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -22,19 +21,22 @@
         android:theme="@style/Theme.Dermai"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentation.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/AuthActivityTheme" />
+        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true" />
-
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true"
+            android:noHistory="true"
             android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
