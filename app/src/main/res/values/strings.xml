@@ -7,11 +7,19 @@
     <string name="history">History</string>
     <string name="search__">Search...</string>
     <string name="recent">Recent</string>
-    <string name="email">email</string>
+    <string name="email">Email</string>
     <string name="email__">Email:</string>
     <string name="age__">Age:</string>
     <string name="skin_color__">Skin Color:</string>
     <string name="skin_type__">Skin Type:</string>
     <string name="choose_an_image">Choose an image</string>
     <string name="select_or_take_an_image">Select or take an image</string>
+    <string name="username">Username</string>
+    <string name="forgot_password_underlined"><u>Forgot Password?</u></string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
