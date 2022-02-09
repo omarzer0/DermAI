@@ -17,6 +17,7 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_220sdp"
             android:layout_marginTop="@dimen/_46sdp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,11 +28,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginBottom="@dimen/_12sdp"
-            android:text="@string/select_or_take_an_image"
+            android:text="@string/select_image"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/chosen_image_iv"
-            app:layout_constraintStart_toStartOf="@+id/chosen_image_iv"
+            app:layout_constraintEnd_toStartOf="@+id/upload_image_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chosen_image_iv"
             app:layout_constraintVertical_bias="0.5" />
+
+        <Button
+            android:id="@+id/upload_image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:text="@string/scan_image"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/take_image_btn"
+            app:layout_constraintTop_toBottomOf="@+id/chosen_image_iv"
+            app:layout_constraintVertical_bias="0.5" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

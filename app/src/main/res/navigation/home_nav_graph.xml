@@ -28,5 +28,23 @@
         android:id="@+id/scanFragment"
         android:name="graduation.fcm.dermai.presentation.main.scan.ScanFragment"
         android:label="Scan"
-        tools:layout="@layout/fragment_scan" />
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_scanFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="graduation.fcm.dermai.presentation.main.question.QuestionsFragment"
+        tools:layout="@layout/fragment_questions">
+        <action
+            android:id="@+id/action_questionsFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="graduation.fcm.dermai.presentation.main.result.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result" />
 </navigation>

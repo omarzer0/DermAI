@@ -1,6 +1,8 @@
 package graduation.fcm.dermai.core
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ import es.dmoral.toasty.Toasty
 import graduation.fcm.dermai.common.Event
 import graduation.fcm.dermai.common.IS_DEBUG
 import graduation.fcm.dermai.common.Status
+import graduation.fcm.dermai.presentation.auth.AuthActivity
 import graduation.fcm.dermai.presentation.main.MainActivity
 import kotlinx.coroutines.flow.collectLatest
 
@@ -70,6 +73,18 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         requireActivity().finish()
     }
 
+    fun logOut() {
+        startActivity(Intent(requireActivity(), AuthActivity::class.java))
+        requireActivity().finish()
+    }
+
+    fun isNetworkAvailable(): Boolean {
+        val connectivityManager =
+            requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
+    }
+
     private fun observeState() {
         lifecycleScope.launchWhenStarted {
             viewModel.status.collectLatest { state ->
@@ -80,7 +95,15 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
                             toastMy(it.message.toString())
                         }
                         is Status.NotAuthorized -> {
+                            it.message?.let { msg -> toastMy(msg) }
+                            logOut()
+                        }
+                        is Status.TimeOut -> {
+                            it.message?.let { msg -> toastMy(msg) }
+                        }
 
+                        is Status.ServerError -> {
+                            it.message?.let { msg -> toastMy(msg) }
                         }
                         else -> {
                         }

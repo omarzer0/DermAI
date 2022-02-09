@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 toastMy(it.error)
                 return@observeIfNotHandled
             }
-            Log.e("observeData", "observeData: $it")
+            Log.e("observeData", it.data.token)
             sharedPreferenceManger.token = it.data.token
             sharedPreferenceManger.hasLoggedIn = true
             navigateToHomeActivity()

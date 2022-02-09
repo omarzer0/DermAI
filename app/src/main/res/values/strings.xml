@@ -13,7 +13,7 @@
     <string name="skin_color__">Skin Color:</string>
     <string name="skin_type__">Skin Type:</string>
     <string name="choose_an_image">Choose an image</string>
-    <string name="select_or_take_an_image">Select or take an image</string>
+    <string name="select_image">Select image</string>
     <string name="username">Username</string>
     <string name="forgot_password_underlined"><u>Forgot Password?</u></string>
     <string name="password">Password</string>
@@ -22,4 +22,7 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign up</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="not_granted">Can\'t use camera without permission</string>
+    <string name="scan_image">Scan image</string>
+    <string name="select_another_image">Select another image</string>
 </resources>

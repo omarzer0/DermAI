@@ -17,7 +17,7 @@ class RegisterViewModel @Inject constructor(private val repo: AuthRepositoryImpl
     val registerLD: LiveData<Event<AuthResponse>> = _registerMLD
 
     fun register(name: String, email: String, password: String) {
-        safeCallApi({ repo.register(name, email, password, 0) }, {
+        safeCallApi({ repo.register(name, email, password) }, {
             _registerMLD.value = Event(it)
         })
     }

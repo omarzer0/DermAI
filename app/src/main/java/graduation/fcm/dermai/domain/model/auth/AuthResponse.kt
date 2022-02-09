@@ -5,3 +5,7 @@ import graduation.fcm.dermai.core.BaseResponse
 data class AuthResponse(
     val data: AuthData
 ) : BaseResponse()
+
+data class AuthData(
+    val token: String
+)

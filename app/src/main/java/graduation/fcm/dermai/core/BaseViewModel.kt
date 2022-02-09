@@ -59,13 +59,23 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
                 )
                 when (callResponse.code()) {
                     401 -> {
-
+                        _status.value =
+                            Event(Status.NotAuthorized("Session expired please login again"))
                     }
                     404 -> {
 
                     }
                     405 -> {
                         _status.value = Event(Status.Error("Method not allowed"))
+                    }
+
+                    408 -> {
+                        _status.value = Event(Status.TimeOut("Time out please try again!"))
+                    }
+
+                    in 500..599 -> {
+                        _status.value =
+                            Event(Status.ServerError("Server is down please try again later"))
                     }
                     else -> {
 

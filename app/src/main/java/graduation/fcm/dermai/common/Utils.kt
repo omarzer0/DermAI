@@ -9,6 +9,7 @@ import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import es.dmoral.toasty.Toasty
 import graduation.fcm.dermai.R
+import gun0912.tedimagepicker.builder.TedImagePicker
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -69,3 +70,24 @@ fun setImageUsingGlide(view: ImageView, imageUrl: String?) {
         Log.e("Utils glide", "setImageUsingGlide ${e.localizedMessage}")
     }
 }
+
+fun pickImage(context: Context, action: (Uri) -> Unit) {
+    TedImagePicker.with(context)
+        .title("Choose image")
+        .backButton(R.drawable.ic_arrow_back_black_24dp)
+        .showCameraTile(true)
+        .buttonBackground(R.drawable.btn_done_button)
+        .buttonTextColor(R.color.white)
+        .buttonText("Choose image")
+        .errorListener { throwable ->
+            Log.e(
+                "pickImage",
+                throwable.localizedMessage ?: "pickImage"
+            )
+        }
+        .start { uri ->
+            action(uri)
+        }
+}
+
+
