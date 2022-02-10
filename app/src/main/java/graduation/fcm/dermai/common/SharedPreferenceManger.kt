@@ -29,6 +29,7 @@ class SharedPreferenceManger @Inject constructor(
 
     var token: String
         get() = "Bearer ${getStringValue(TOKEN)}"
+        //        get() = "Bearer 33|rhOdHiV77I1obOSKI1xBgHJZCjg7uYRXGBW5CcDX"
         set(value) = setValue(TOKEN, value)
 
     fun setValue(key: String, value: String) {

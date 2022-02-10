@@ -48,12 +48,24 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
 
-                R.id.questionsFragment ->{
+                R.id.questionsFragment -> {
                     hideBottomNav()
+                    hideToolBar()
+                }
+
+                R.id.resultFragment -> {
+                    hideBottomNav()
+                    showToolBar()
+                }
+
+                R.id.scanFragment -> {
+                    hideBottomNav()
+                    showToolBar()
                 }
 
                 else -> {
                     showBottomNav()
+                    showToolBar()
                 }
             }
         }
@@ -61,6 +73,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBottomNav() {
         binding.bottomNavigationView.show()
+    }
+
+    private fun showToolBar() {
         binding.toolbar.show()
     }
 
@@ -68,6 +83,11 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.gone()
         binding.toolbar.gone()
     }
+
+    private fun hideToolBar() {
+        binding.toolbar.gone()
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarrConfiguration) || super.onSupportNavigateUp()

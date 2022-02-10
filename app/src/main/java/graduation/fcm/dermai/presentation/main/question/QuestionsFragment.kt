@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +18,7 @@ import graduation.fcm.dermai.presentation.main.adapter.AnswerAdapter
 class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
 
     override val viewModel: QuestionsViewModel by viewModels()
+    override fun selfHandleObserveState(): Boolean = false
     private val answerAdapter = AnswerAdapter { answer ->
         viewModel.preformClick(answer)
     }
@@ -41,9 +41,10 @@ class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
     private fun handleQuestions(position: Int, questions: List<Question>) {
         binding.rvAnswers.adapter = answerAdapter
         val layoutManager = when (questions[position].answer.size) {
-            2 -> LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-            3 -> LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            else -> GridLayoutManager(requireContext(), 2)
+//            2 -> LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+//            3 -> LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+//            else -> GridLayoutManager(requireContext(), 2)
+            else -> LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
         binding.rvAnswers.layoutManager = layoutManager
         answerAdapter.changeItems(questions[position].answer)

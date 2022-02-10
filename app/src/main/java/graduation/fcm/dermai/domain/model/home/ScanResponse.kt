@@ -15,6 +15,6 @@ data class ScanData(
 data class Disease(
     val id: Int,
     val name: String,
-    val description: String,
-    val confirmation: Int,
+    val description: String?,
+    val confirmation: String,
 )

@@ -19,8 +19,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ScanFragment : BaseFragment<FragmentScanBinding>() {
 
-    @Inject
-    lateinit var sharedPreferenceManger: SharedPreferenceManger
+
+    override fun selfHandleObserveState(): Boolean = false
 
     override val viewModel: ScanViewModel by viewModels()
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
@@ -40,16 +40,6 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
             binding.uploadImageBtn.show()
             binding.takeImageBtn.text = getString(R.string.select_another_image)
         }
-
-//        viewModel.scanResult.observeIfNotHandled {
-////            binding.loadingPbView.loadingPb.gone()
-//            if (it.error.isNotEmpty()) {
-//                toastMy(it.error, true)
-//                Log.e("scanResult", "observeData: ${it.error} ")
-//                return@observeIfNotHandled
-//            }
-//            toastMy("${it.data}", true)
-//        }
     }
 
     private fun handleClicks() {
@@ -59,10 +49,6 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
 
         binding.uploadImageBtn.setOnClickListener {
             val uri = viewModel.currentImage.value ?: return@setOnClickListener
-            if (!isNetworkAvailable()) {
-                toastMy("Check your internet connection!")
-                return@setOnClickListener
-            }
             sharedPreferenceManger.imageUri = uri.toString()
             navigate(ScanFragmentDirections.actionScanFragmentToQuestionsFragment())
         }

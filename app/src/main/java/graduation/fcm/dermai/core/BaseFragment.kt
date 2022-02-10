@@ -16,16 +16,22 @@ import androidx.viewbinding.ViewBinding
 import es.dmoral.toasty.Toasty
 import graduation.fcm.dermai.common.Event
 import graduation.fcm.dermai.common.IS_DEBUG
+import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.common.Status
 import graduation.fcm.dermai.presentation.auth.AuthActivity
 import graduation.fcm.dermai.presentation.main.MainActivity
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
     abstract val viewModel: BaseViewModel
+    private var selfHandle = false
+
+    @Inject
+    lateinit var sharedPreferenceManger: SharedPreferenceManger
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,11 +39,13 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = onCreateBinding(inflater, container)
+        selfHandle = selfHandleObserveState()
         observeState()
         return binding.root
     }
 
     abstract fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): VB
+    abstract fun selfHandleObserveState(): Boolean
 
     fun navigate(action: NavDirections) {
         findNavController().navigate(action)
@@ -74,6 +82,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     }
 
     fun logOut() {
+        sharedPreferenceManger.hasLoggedIn = false
+        sharedPreferenceManger.token = ""
         startActivity(Intent(requireActivity(), AuthActivity::class.java))
         requireActivity().finish()
     }
@@ -85,14 +95,19 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 
-    private fun observeState() {
+    private fun observeState(
+        whenLoading: (() -> Unit)? = null,
+        whenSuccess: (() -> Unit)? = null,
+        whenFail: ((message: String?) -> Unit)? = null,
+    ) {
         lifecycleScope.launchWhenStarted {
             viewModel.status.collectLatest { state ->
                 state.getContentIfNotHandled()?.let {
                     when (it) {
                         is Status.Error -> {
                             if (it.message == null) return@let
-                            toastMy(it.message.toString())
+                            if (!selfHandleObserveState()) toastMy(it.message.toString())
+                            whenFail?.invoke(it.message)
                         }
                         is Status.NotAuthorized -> {
                             it.message?.let { msg -> toastMy(msg) }
@@ -104,6 +119,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
                         is Status.ServerError -> {
                             it.message?.let { msg -> toastMy(msg) }
+                        }
+
+                        is Status.Loading -> {
+                            whenLoading?.invoke()
+                        }
+
+                        is Status.Success<*> -> {
+                            whenSuccess?.invoke()
                         }
                         else -> {
                         }

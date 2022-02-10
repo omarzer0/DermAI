@@ -3,6 +3,7 @@ package graduation.fcm.dermai.presentation.splash
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.common.SharedPreferenceManger
@@ -20,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (sharedPreferenceManger.token != "" && sharedPreferenceManger.hasLoggedIn)
+        if (sharedPreferenceManger.token.trim() != "Bearer" && sharedPreferenceManger.hasLoggedIn)
             startActivity(Intent(this, MainActivity::class.java))
         else
             startActivity(Intent(this, AuthActivity::class.java))

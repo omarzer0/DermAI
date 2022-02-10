@@ -19,8 +19,7 @@ import javax.inject.Inject
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     override val viewModel: RegisterViewModel by viewModels()
 
-    @Inject
-    lateinit var sharedPreferenceManger: SharedPreferenceManger
+    override fun selfHandleObserveState(): Boolean = false
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentRegisterBinding.inflate(inflater, container, false)

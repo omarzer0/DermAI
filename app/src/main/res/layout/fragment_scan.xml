@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         tools:context=".presentation.main.scan.ScanFragment">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/chosen_image_iv"
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_220sdp"
@@ -20,7 +20,9 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/mainColor"
+            app:strokeWidth="@dimen/_2sdp" />
 
         <Button
             android:id="@+id/take_image_btn"

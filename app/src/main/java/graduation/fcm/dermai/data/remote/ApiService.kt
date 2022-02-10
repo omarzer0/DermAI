@@ -2,6 +2,7 @@ package graduation.fcm.dermai.data.remote
 
 import graduation.fcm.dermai.domain.model.auth.AuthResponse
 import graduation.fcm.dermai.domain.model.home.ScanResponse
+import graduation.fcm.dermai.domain.model.home.UserResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
@@ -27,5 +28,10 @@ interface ApiService {
         @Part img: MultipartBody.Part,
         @Header("Authorization") token: String,
     ): Response<ScanResponse>
+
+    @GET("get_user_data")
+    suspend fun getUserData(
+        @Header("Authorization") token: String,
+    ): Response<UserResponse>
 
 }

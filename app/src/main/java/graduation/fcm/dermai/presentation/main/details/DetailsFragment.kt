@@ -1,4 +1,4 @@
-package graduation.fcm.dermai.presentation
+package graduation.fcm.dermai.presentation.main.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.core.BaseViewModel
-import graduation.fcm.dermai.databinding.FragmentEmptyBinding
+import graduation.fcm.dermai.databinding.FragmentDetailsBinding
 
 @AndroidEntryPoint
-class EmptyFragment : BaseFragment<FragmentEmptyBinding>() {
+class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override val viewModel: BaseViewModel by viewModels()
     override fun selfHandleObserveState(): Boolean = false
@@ -27,7 +27,7 @@ class EmptyFragment : BaseFragment<FragmentEmptyBinding>() {
     }
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        FragmentEmptyBinding.inflate(inflater, container, false)
+        FragmentDetailsBinding.inflate(inflater, container, false)
 
 
 }

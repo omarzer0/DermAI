@@ -52,17 +52,47 @@ class QuestionsViewModel @Inject constructor(
 
 data class QuestionsState(
     val question: MutableList<Question> = mutableListOf<Question>().apply {
-        add(Question("q1", "Are Yui deaf?", listOf("yes", "no"), QuestionType.POLAR)) //0
-        add(Question("q2", "Are?", listOf("yes", "no", "be"), QuestionType.MULTI_CHOICE))//1
-        add(Question("q1", "Are Yui deaf?", listOf("yes", "no"), QuestionType.POLAR)) //2
+        add(
+            Question(
+                "q1",
+                "Does your skin appear normal and healthy?",
+                listOf("yes", "no"),
+                QuestionType.POLAR
+            )
+        ) //0
         add(
             Question(
                 "q2",
-                "Are?",
-                listOf("yes", "no", "be", "hello"),
+                "Does the disease affect a large part of the body, a large part of multiple parts?",
+                listOf("Single Lesion", "Limited Area", "Widespread"),
                 QuestionType.MULTI_CHOICE
             )
+        )//1
+        add(
+            Question(
+                "q3",
+                "How long have you had this condition?",
+                listOf("Days", "Weeks", "Months", "Years"),
+                QuestionType.MULTI_CHOICE
+            )
+        ) //2
+        add(
+            Question(
+                "q4",
+                "Do you need to itch?",
+                listOf("yes", "no"),
+                QuestionType.POLAR
+            )
         )//3
+
+        add(
+            Question(
+                "q5",
+                "Do you have a fever?",
+                listOf("yes", "no"),
+                QuestionType.POLAR
+            )
+        )
     },
     val currentPosition: Int = 0,
     val shouldNavigateToAction: Boolean = false

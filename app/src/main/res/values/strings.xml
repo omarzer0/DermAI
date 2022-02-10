@@ -25,4 +25,18 @@
     <string name="not_granted">Can\'t use camera without permission</string>
     <string name="scan_image">Scan image</string>
     <string name="select_another_image">Select another image</string>
+    <string name="app_has_identified_the_following_matches_n_tap_each_one_to_see_more_images_and_take_action">App has identified the following matches.\n Tap each one to see more images and take action</string>
+    <string name="confirm">Confirm</string>
+    <string name="more__"><![CDATA[More >]]></string>
+    <string name="please_wait_while_your_image_been_processed">Please wait while your image been processed...</string>
+    <string name="skin_disease">Skin Disease</string>
+    <string name="description__">Description:</string>
+    <string name="self_care__">Self Care:</string>
+    <string name="adds__">Adds:</string>
+    <string name="section__">Section:</string>
+    <string name="dummy_long_text">fasf safj afjsd iojfa dsjfi asdfijdsif jdiasd fisidf jdisofj sdijfpasdjf isdfjpdsjfiasdj dijf dtuja8rth dscnfdsfuedth yhsfgjasdphfbanpdfhau pyhr [ajsg</string>
+    <string name="get_medicines">Get Medicines</string>
+    <string name="get_a_doctor">Get a Doctor</string>
+    <string name="start">Start</string>
+    <string name="logout">Logout</string>
 </resources>
