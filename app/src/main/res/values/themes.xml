@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Dermai" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -24,9 +24,17 @@
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 
+    <style name="MainActivityTheme" parent="Theme.Dermai">
+        <item name="android:navigationBarColor">@color/mainColor</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
     <style name="AuthActivityTheme" parent="Theme.Dermai">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="headerTextStyle" parent="TextAppearance.AppCompat">

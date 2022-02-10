@@ -5,7 +5,6 @@
     android:id="@+id/nv_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:fillViewport="true"
     tools:context=".presentation.main.question.QuestionsFragment">
 
@@ -13,7 +12,7 @@
         android:id="@+id/questions_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:background="@drawable/bg">
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -40,7 +39,7 @@
             android:layout_margin="@dimen/_12sdp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,9 +51,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_46sdp"
             android:orientation="vertical"
             android:padding="@dimen/_12sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_question"

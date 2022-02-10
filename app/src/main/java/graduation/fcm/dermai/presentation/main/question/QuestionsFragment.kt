@@ -1,6 +1,8 @@
 package graduation.fcm.dermai.presentation.main.question
 
+import android.content.Context
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
+import graduation.fcm.dermai.R
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentQuestionsBinding
 import graduation.fcm.dermai.domain.model.home.Question
@@ -62,5 +65,4 @@ class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentQuestionsBinding.inflate(inflater, container, false)
-
 }
