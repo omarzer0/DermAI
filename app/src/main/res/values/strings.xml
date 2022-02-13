@@ -39,4 +39,5 @@
     <string name="get_a_doctor">Get a Doctor</string>
     <string name="start">Start</string>
     <string name="logout">Logout</string>
+    <string name="confirmed">Confirmed</string>
 </resources>

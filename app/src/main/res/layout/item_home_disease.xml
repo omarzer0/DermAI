@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="8dp"
     android:layout_margin="@dimen/_8sdp"
-    app:cardCornerRadius="@dimen/_12sdp">
+    app:cardCornerRadius="@dimen/_12sdp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +15,8 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/disease_image_iv"
             style="@style/roundShapeableImage"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_120sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,29 +27,32 @@
         <TextView
             android:id="@+id/captured_at_tv"
             style="@style/bodyTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/_12sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/disease_image_iv"
-            tools:text="This is a text" />
+            tools:text="@string/dummy_long_text" />
 
         <TextView
             android:id="@+id/confirmed_text_tv"
             style="@style/headerTextStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_8sdp"
             android:layout_margin="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/confirmed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/confirm_circle_check"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/captured_at_tv"
-            tools:text="This is a text" />
+            app:layout_constraintTop_toBottomOf="@+id/captured_at_tv" />
 
         <ImageView
             android:id="@+id/confirm_circle_check"
@@ -62,5 +65,10 @@
             app:layout_constraintStart_toEndOf="@+id/confirmed_text_tv"
             app:layout_constraintTop_toTopOf="@+id/confirmed_text_tv" />
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/confirm_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="confirm_circle_check,confirmed_text_tv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

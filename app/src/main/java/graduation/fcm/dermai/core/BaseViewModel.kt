@@ -4,9 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import graduation.fcm.dermai.common.Event
-import graduation.fcm.dermai.common.Status
-import graduation.fcm.dermai.common.UNKNOWN_ERROR
+import graduation.fcm.dermai.common.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,6 +38,81 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             errorResponse?.invoke(errorMessage)
         }
     }
+
+    protected fun <T : BaseResponse> networkCall(
+        action: suspend () -> Response<T>,
+        onReply: (ResponseState<T>) -> Unit,
+        showLoading: Boolean = true
+    ) {
+        viewModelScope.launch {
+            if (showLoading) onReply(ResponseState.Loading())
+            try {
+                val response = action()
+                if (response.isSuccessful) {
+                    val body = response.body() ?: return@launch
+                    if (body.error.isNotEmpty()) {
+                        // error from api
+                        onReply(ResponseState.Error(body.error))
+                        Log.e("networkCall", "error ${body.error}")
+                    } else {
+                        // success
+                        onReply(ResponseState.Success(body))
+                        Log.e("networkCall", "success ${response.code()} $body")
+                    }
+
+                } else {
+                    when (response.code()) {
+                        401 -> {
+                            onReply(ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR))
+                            Log.e("networkCall", "error ${response.code()} not auth")
+                        }
+                        else -> {
+                            onReply(ResponseState.Error(UNKNOWN_ERROR))
+                            Log.e("networkCall", "error ${response.code()} ${response.errorBody()}")
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                // network error
+                onReply(ResponseState.Error(NETWORK_ERROR))
+                Log.e("networkCall", "network error ${e.localizedMessage}")
+            }
+        }
+    }
+
+    // _historyResult.value = ResponseState.Loading()
+    //        try {
+    //            val response = repo.getScanHistory()
+    //            if (response.isSuccessful) {
+    //                val body = response.body() ?: throw Exception("Empty body!")
+    //                if (body.error.isNotEmpty()) {
+    //                    // error
+    //                    Log.e("SimpleHandle", "error: ${body.error}")
+    //                    _historyResult.value = ResponseState.Error(body.error)
+    //                } else {
+    //                    _historyResult.value = ResponseState.Success(body)
+    //                }
+    //
+    //            } else {
+    //                Log.e("SimpleHandle", "error: ${response.code()} ${response.message()}")
+    //                when (response.code()) {
+    //                    401 -> {
+    //                        _historyResult.value =
+    //                            ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR)
+    //                    }
+    //                    else -> {
+    //                        _historyResult.value =
+    //                            ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR)
+    //                    }
+    //                }
+    //            }
+    //
+    //        } catch (e: Exception) {
+    //            Log.e("SimpleHandle", "error: ${e.localizedMessage}")
+    //            //Network error
+    //            _historyResult.value = ResponseState.Error(NETWORK_ERROR)
+    //        }
+
 
     protected fun <T> safeCallApi(
         action: suspend () -> Response<T>,

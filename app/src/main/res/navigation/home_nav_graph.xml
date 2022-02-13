@@ -45,6 +45,11 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="graduation.fcm.dermai.presentation.main.result.ResultFragment"
-        android:label="Result"
-        tools:layout="@layout/fragment_result" />
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="diseaseId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>

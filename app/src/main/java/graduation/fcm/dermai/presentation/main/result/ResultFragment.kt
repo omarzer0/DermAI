@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import graduation.fcm.dermai.common.ResponseState
 import graduation.fcm.dermai.common.extentions.gone
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentResultBinding
+import graduation.fcm.dermai.domain.model.home.DiseaseWithResult
 import graduation.fcm.dermai.presentation.main.adapter.ResultAdapter
 
 @AndroidEntryPoint
@@ -22,14 +24,15 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     override fun selfHandleObserveState(): Boolean = true
 
     override val viewModel: ResultViewModel by viewModels()
-    private val resultAdapter = ResultAdapter()
+    private val resultAdapter = ResultAdapter(onConfirmClick = { resultID, diseaseID ->
+        viewModel.confirmOrUnConfirm(resultID, diseaseID)
+    })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRv()
         handleClicks()
         observeData()
-        showOrHide(loading = true, success = false)
     }
 
 
@@ -38,18 +41,32 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     }
 
     private fun observeData() {
-        Log.e("ResultFragment", "observeData:")
         viewModel.scanResult.observe(viewLifecycleOwner) {
-            if (it.error.isNotEmpty()) {
-                if (!viewModel.errorHandled) toastMy(it.error, true)
-                showOrHide(loading = false, success = false)
-                viewModel.errorHandled = true
-                return@observe
+            when (it) {
+                is ResponseState.Error -> {
+                    if (it.hasBeenHandled) return@observe
+
+                    it.hasBeenHandled = true
+                    showOrHide(loading = false, success = false)
+                }
+                is ResponseState.Loading -> {
+                    showOrHide(true, success = false)
+                }
+                is ResponseState.NotAuthorized -> {
+                    logOut()
+                }
+                is ResponseState.Success -> {
+                    showOrHide(loading = false, success = true)
+                    val data = it.data ?: return@observe
+                    Log.e("TAG", "observeData: $it")
+                    val diseaseWithResult = data.data.disease.map { disease ->
+                        DiseaseWithResult(disease, data.data.result)
+                    }
+                    resultAdapter.submitList(diseaseWithResult)
+                }
             }
-            Log.e("TAG", "the list is: ${it.data.disease} ")
-            showOrHide(loading = false, success = true)
-            resultAdapter.submitList(it.data.disease)
         }
+
     }
 
 

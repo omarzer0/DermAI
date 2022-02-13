@@ -1,12 +1,11 @@
 package graduation.fcm.dermai.presentation.main.result
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import graduation.fcm.dermai.common.ResponseState
 import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.core.BaseViewModel
-import graduation.fcm.dermai.domain.model.home.ScanData
 import graduation.fcm.dermai.domain.model.home.ScanResponse
 import graduation.fcm.dermai.repository.HomeRepositoryImpl
 import javax.inject.Inject
@@ -17,23 +16,19 @@ class ResultViewModel @Inject constructor(
     private val sharedPreferenceManger: SharedPreferenceManger
 ) : BaseViewModel() {
 
-    private val _scanResult = MutableLiveData<ScanResponse>()
-    val scanResult: LiveData<ScanResponse> = _scanResult
-
-    var errorHandled = false
+    private val _scanResult = MutableLiveData<ResponseState<ScanResponse>>()
+    val scanResult: LiveData<ResponseState<ScanResponse>> = _scanResult
 
     private fun uploadDiseaseImage(uriString: String) {
-        safeCallApi({
-            errorHandled = false
-            repo.uploadDiseaseImage(uriString)
-        }, {
+        networkCall({ repo.uploadDiseaseImage(uriString) }, {
             _scanResult.value = it
-        }, errorResponse = {
-            Log.e("TAG", "uploadDiseaseImage: error")
-            val errorResponse = ScanResponse(ScanData(emptyList()))
-            errorResponse.error = it
-            _scanResult.value = errorResponse
         })
+    }
+
+    fun confirmOrUnConfirm(resultId: Int, diseaseId: Int) {
+        networkCall({ repo.confirmOrUnConfirm(resultId, diseaseId) }, {
+            _scanResult.value = it
+        }, showLoading = false)
     }
 
     init {

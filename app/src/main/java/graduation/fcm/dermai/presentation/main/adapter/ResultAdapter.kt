@@ -1,15 +1,23 @@
 package graduation.fcm.dermai.presentation.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import graduation.fcm.dermai.common.setImageUsingGlide
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import graduation.fcm.dermai.common.extentions.hide
 import graduation.fcm.dermai.databinding.ItemResultDiseaseBinding
 import graduation.fcm.dermai.domain.model.home.Disease
+import graduation.fcm.dermai.domain.model.home.DiseaseWithResult
 
-class ResultAdapter : ListAdapter<Disease, ResultAdapter.ResultViewHolder>(DiffCallback()) {
+class ResultAdapter(
+    val onConfirmClick: (resultID: Int, diseaseID: Int) -> Unit
+) :
+    ListAdapter<DiseaseWithResult, ResultAdapter.ResultViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
         val binding = ItemResultDiseaseBinding.inflate(
@@ -27,24 +35,68 @@ class ResultAdapter : ListAdapter<Disease, ResultAdapter.ResultViewHolder>(DiffC
     inner class ResultViewHolder(val binding: ItemResultDiseaseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentItem: Disease) {
+        init {
+            binding.tvConfirmed.setOnClickListener {
+                onConfirmClick(
+                    getItem(adapterPosition).result.id,
+                    getItem(adapterPosition).disease.id
+                )
+            }
+        }
+
+        fun bind(currentItem: DiseaseWithResult) {
             binding.apply {
-                setImageUsingGlide(ivDiseaseImage, "")
-                diseaseTitleTv.text = currentItem.name
-                diseaseDescriptionTv.text = currentItem.description ?: "Don't return null yabny!!!!"
-                tvConfirmed.text = when (currentItem.confirmation) {
-                    "1" -> "Unconfirmed"
-                    else -> "Confirm"
+                setUpImageSlider(binding, currentItem.disease)
+
+                diseaseTitleTv.text = currentItem.disease.name
+                diseaseDescriptionTv.text =
+                    currentItem.disease.description ?: "Don't return null yabny!!!!"
+                val diseaseId = currentItem.result.disease_id
+                if (diseaseId == null) {
+                    tvConfirmed.text = "Confirm"
+                } else {
+                    if (currentItem.disease.id == diseaseId) tvConfirmed.text = "Unconfirmed"
+                    else tvConfirmed.hide()
                 }
             }
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Disease>() {
-        override fun areItemsTheSame(oldItem: Disease, newItem: Disease): Boolean =
-            oldItem.name == newItem.name
+    private fun setUpImageSlider(binding: ItemResultDiseaseBinding, currentItem: Disease) {
+        val attachments = currentItem.attachment
+        val urlList = attachments.map { it.url }
+        binding.sliderTextContainer.isVisible = urlList.isNotEmpty()
+        val imageSliderAdapter = ImageSliderAdapter()
+        binding.imageViewPager.adapter = imageSliderAdapter
+        imageSliderAdapter.changeItems(urlList)
 
-        override fun areContentsTheSame(oldItem: Disease, newItem: Disease): Boolean =
-            oldItem == newItem
+        TabLayoutMediator(
+            binding.tabSliderMediatorTl,
+            binding.imageViewPager
+        ) { tab, position ->
+            Log.e("TAG", "bind: $position")
+            binding.sliderCounterTv.text = "1/${urlList.size}"
+        }.attach()
+
+        binding.tabSliderMediatorTl.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.e("TAG", "bind: ${tab?.text} ${tab?.position}")
+                val position = tab?.position ?: return
+                binding.sliderCounterTv.text = "${position + 1}/${urlList.size}"
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
+
+    class DiffCallback : DiffUtil.ItemCallback<DiseaseWithResult>() {
+        override fun areItemsTheSame(oldItem: DiseaseWithResult, newItem: DiseaseWithResult):
+                Boolean = oldItem.disease.id == newItem.disease.id
+
+        override fun areContentsTheSame(oldItem: DiseaseWithResult, newItem: DiseaseWithResult):
+                Boolean = oldItem == newItem
     }
 }

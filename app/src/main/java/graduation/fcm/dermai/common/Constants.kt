@@ -10,6 +10,8 @@ const val IMAGE_URI = "image uri key"
 const val EMPTY = ""
 const val TOKEN = "token"
 const val UNKNOWN_ERROR = "Something went wrong please try again later!"
+const val NETWORK_ERROR =  "Check your internet connection!"
+const val NOT_AUTHORIZED_ERROR =  "Session expired please login again"
 const val EMAIL_REG = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$"
 const val IMAGE_SEND_KEY = "img"
 
