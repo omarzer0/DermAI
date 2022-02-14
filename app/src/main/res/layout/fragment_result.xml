@@ -59,21 +59,21 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/tv_loading_text"
-            style="@style/headerTextStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
-            android:gravity="center"
-            android:maxLines="99"
-            android:text="@string/please_wait_while_your_image_been_processed"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loading_pb_view"
-            tools:visibility="visible" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_loading_text"-->
+        <!--            style="@style/headerTextStyleSmall"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="@dimen/_25sdp"-->
+        <!--            android:layout_marginEnd="@dimen/_25sdp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:maxLines="99"-->
+        <!--            android:text="@string/please_wait_while_your_image_been_processed"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/loading_pb_view"-->
+        <!--            tools:visibility="visible" />-->
 
         <TextView
             android:id="@+id/tv_no_result_text"
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:constraint_referenced_ids="loading_pb_view,tv_loading_text"
+            app:constraint_referenced_ids="loading_pb_view"
             tools:visibility="gone" />
 
         <androidx.constraintlayout.widget.Group

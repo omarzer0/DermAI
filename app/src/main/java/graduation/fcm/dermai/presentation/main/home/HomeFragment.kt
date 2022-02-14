@@ -52,8 +52,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     binding.tvHistory.gone()
                 }
                 is ResponseState.Loading -> {
-                    binding.historyRv.gone()
-                    binding.tvHistory.gone()
+//                    binding.historyRv.gone()
+//                    binding.tvHistory.gone()
                 }
                 is ResponseState.NotAuthorized -> {
                     logOut()

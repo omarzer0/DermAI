@@ -12,7 +12,7 @@
         android:id="@+id/questions_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg">
+        android:background="@drawable/bg_black">
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -59,6 +59,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_question"
+            app:layout_constraintVertical_bias="0"
             tools:itemCount="4"
             tools:listitem="@layout/item_answer" />
 

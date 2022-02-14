@@ -54,6 +54,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 is ResponseState.NotAuthorized -> logOut()
                 is ResponseState.Success -> {
                     val data = it.data?.data ?: return@observe
+                    binding.textView3.show()
+
                     val diseaseToUse =
                         data.history ?: data.disease ?: data.diseases ?: return@observe
 
