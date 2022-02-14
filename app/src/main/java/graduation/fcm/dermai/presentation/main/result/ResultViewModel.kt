@@ -65,6 +65,9 @@ class ResultViewModel @Inject constructor(
             SEARCH -> {
                 if (searchQuery.isNotEmpty()) getDiseaseSearchResult(searchQuery)
             }
+            SEARCH_HISTORY -> {
+
+            }
         }
 
     }

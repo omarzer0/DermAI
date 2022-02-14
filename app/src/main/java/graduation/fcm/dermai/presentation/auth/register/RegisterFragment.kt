@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.common.EMAIL_REG
-import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.common.extentions.gone
+import graduation.fcm.dermai.common.extentions.hideKeyboard
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentRegisterBinding
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
@@ -48,7 +47,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         binding.apply {
             loginTv.setOnClickListener { navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()) }
 
-            binding.singUpBtn.setOnClickListener { getDataFromViews() }
+            binding.singUpBtn.setOnClickListener {
+                hideKeyboard()
+                getDataFromViews()
+            }
         }
     }
 

@@ -33,6 +33,7 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
             when (it) {
                 is ResponseState.Error -> {
                     binding.loadingPbView.loadingPb.gone()
+                    binding.doctorTitleTv.gone()
                     if (it.hasBeenHandled) return@observe
 
                     it.hasBeenHandled = true
@@ -40,14 +41,17 @@ class DoctorFragment : BaseFragment<FragmentDoctorBinding>() {
                 }
                 is ResponseState.Loading -> {
                     binding.loadingPbView.loadingPb.show()
+                    binding.doctorTitleTv.gone()
                 }
                 is ResponseState.NotAuthorized -> {
                     binding.loadingPbView.loadingPb.gone()
+                    binding.doctorTitleTv.gone()
                     logOut()
                 }
                 is ResponseState.Success -> {
                     binding.loadingPbView.loadingPb.gone()
                     val data = it.data ?: return@observe
+                    binding.doctorTitleTv.show()
                     doctorAdapter.submitList(data.data.doctors)
                     Log.e("TAG", "observeData: ${data.data.doctors}")
                 }

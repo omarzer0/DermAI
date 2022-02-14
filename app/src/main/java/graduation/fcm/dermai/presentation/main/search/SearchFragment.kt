@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.common.ResponseState
+import graduation.fcm.dermai.common.extentions.gone
 import graduation.fcm.dermai.common.extentions.hide
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
@@ -23,7 +24,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override val viewModel: SearchViewModel by viewModels()
     override fun selfHandleObserveState(): Boolean = false
 
-    private val searchHistoryAdapter = SearchHistoryAdapter()
+    private val searchHistoryAdapter = SearchHistoryAdapter {
+//        navigate(
+//            SearchFragmentDirections.actionSearchFragmentToResultFragment(
+//                FromScreen.SEARCH,
+//                "",
+//                it,
+//                ""
+//            )
+//        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,9 +48,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         viewModel.searchHistoryResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseState.Error -> {
+                    binding.textView3.gone()
                 }
-                is ResponseState.Loading -> {
-                }
+                is ResponseState.Loading -> { }
                 is ResponseState.NotAuthorized -> logOut()
                 is ResponseState.Success -> {
                     val data = it.data?.data ?: return@observe
@@ -60,6 +70,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     }
 
                     Log.e("searchResults", "searchResults: $searchResults")
+                    if (searchResults.isEmpty()) binding.textView3.gone()
+                    else binding.textView3.show()
 
                     searchHistoryAdapter.submitList(searchResults)
                 }

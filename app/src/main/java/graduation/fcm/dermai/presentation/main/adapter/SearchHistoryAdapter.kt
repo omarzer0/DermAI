@@ -10,7 +10,9 @@ import graduation.fcm.dermai.common.setImageUsingGlide
 import graduation.fcm.dermai.databinding.ItemSearchDiseaseBinding
 import graduation.fcm.dermai.domain.model.home.SearchResult
 
-class SearchHistoryAdapter :
+class SearchHistoryAdapter(
+    val onSearchClick: (Int) -> Unit
+) :
     ListAdapter<SearchResult, SearchHistoryAdapter.SearchHistoryViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHistoryViewHolder {
@@ -29,11 +31,16 @@ class SearchHistoryAdapter :
     inner class SearchHistoryViewHolder(val binding: ItemSearchDiseaseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setOnClickListener {
+                onSearchClick(getItem(adapterPosition).id)
+            }
+        }
+
         fun bind(currentItem: SearchResult) {
             binding.apply {
                 Log.e("searchResults", "bind: $currentItem")
-                // TODO use the real image
-                setImageUsingGlide(diseaseImageIv, "")
+                setImageUsingGlide(diseaseImageIv, currentItem.image)
                 diseaseNameTv.text = currentItem.name
             }
         }

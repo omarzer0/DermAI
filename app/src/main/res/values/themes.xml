@@ -18,7 +18,7 @@
     </style>
 
     <style name="SplashActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/mainColor</item>
+        <item name="android:windowBackground">@drawable/splash_image</item>
         <item name="colorPrimaryDark">@color/mainColor</item>
         <item name="android:navigationBarColor">@color/mainColor</item>
         <item name="android:windowAnimationStyle">@null</item>

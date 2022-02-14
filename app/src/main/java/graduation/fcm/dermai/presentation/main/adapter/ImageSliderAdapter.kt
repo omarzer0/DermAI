@@ -34,8 +34,7 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
     inner class ImageSliderViewHolder(private val binding: ItemImageSliderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(currentItem: String) {
-            // TODO: use current image ya beeeh
-            setImageUsingGlide(binding.sliderImageIv, "")
+            setImageUsingGlide(binding.sliderImageIv, currentItem)
         }
     }
 
