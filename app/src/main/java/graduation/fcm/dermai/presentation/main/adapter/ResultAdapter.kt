@@ -15,7 +15,8 @@ import graduation.fcm.dermai.domain.model.home.Disease
 import graduation.fcm.dermai.domain.model.home.DiseaseWithResult
 
 class ResultAdapter(
-    val onConfirmClick: (resultID: Int, diseaseID: Int) -> Unit
+    val onConfirmClick: (resultID: Int, diseaseID: Int) -> Unit,
+    val onMoreClick: (disease: Disease) -> Unit
 ) :
     ListAdapter<DiseaseWithResult, ResultAdapter.ResultViewHolder>(DiffCallback()) {
 
@@ -42,6 +43,8 @@ class ResultAdapter(
                     getItem(adapterPosition).disease.id
                 )
             }
+
+            binding.tvMoreDetails.setOnClickListener { onMoreClick(getItem(adapterPosition).disease) }
         }
 
         fun bind(currentItem: DiseaseWithResult) {

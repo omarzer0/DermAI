@@ -1,8 +1,6 @@
 package graduation.fcm.dermai.presentation.main.question
 
-import android.content.Context
 import android.os.Bundle
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import graduation.fcm.dermai.R
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentQuestionsBinding
 import graduation.fcm.dermai.domain.model.home.Question
@@ -36,7 +33,7 @@ class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
         viewModel.state.observe(viewLifecycleOwner) { questionState ->
             handleQuestions(questionState.currentPosition, questionState.question)
             if (questionState.shouldNavigateToAction)
-                navigate(QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment())
+                navigate(QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(-1))
 
         }
     }

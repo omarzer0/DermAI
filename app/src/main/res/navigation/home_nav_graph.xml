@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_homeFragment_to_scanFragment"
             app:destination="@id/scanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -28,7 +32,7 @@
         android:id="@+id/scanFragment"
         android:name="graduation.fcm.dermai.presentation.main.scan.ScanFragment"
         android:label="Scan"
-        tools:layout="@layout/fragment_scan" >
+        tools:layout="@layout/fragment_scan">
         <action
             android:id="@+id/action_scanFragment_to_questionsFragment"
             app:destination="@id/questionsFragment" />
@@ -45,11 +49,30 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="graduation.fcm.dermai.presentation.main.result.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
         <argument
             android:name="diseaseId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_resultFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="graduation.fcm.dermai.presentation.main.details.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="disease"
+            app:argType="graduation.fcm.dermai.domain.model.home.Disease" />
+        <action
+            android:id="@+id/action_detailsFragment_to_doctorFragment"
+            app:destination="@id/doctorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorFragment"
+        android:name="graduation.fcm.dermai.presentation.main.doctor.DoctorFragment"
+        android:label="Doctors"
+        tools:layout="@layout/fragment_doctor" />
 </navigation>

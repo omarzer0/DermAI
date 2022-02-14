@@ -40,4 +40,8 @@
     <string name="start">Start</string>
     <string name="logout">Logout</string>
     <string name="confirmed">Confirmed</string>
+    <string name="symptoms__">Symptoms:</string>
+    <string name="precautions__">Precautions:</string>
+    <string name="contact_your_doctor_through_our_app">Contact your doctor through our app</string>
+    <string name="contact">Contact</string>
 </resources>

@@ -26,6 +26,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     override val viewModel: ResultViewModel by viewModels()
     private val resultAdapter = ResultAdapter(onConfirmClick = { resultID, diseaseID ->
         viewModel.confirmOrUnConfirm(resultID, diseaseID)
+    }, onMoreClick = {
+        navigate(ResultFragmentDirections.actionResultFragmentToDetailsFragment(it))
     })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,6 +1,9 @@
 package graduation.fcm.dermai.domain.model.home
 
+import android.os.Parcelable
 import graduation.fcm.dermai.core.BaseResponse
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 data class ScanResponse(
     val data: ScanData
@@ -18,13 +21,15 @@ data class Result(
     val confirmed: Boolean
 )
 
+@Parcelize
 data class Disease(
     val id: Int,
     val name: String,
     val description: String?,
-//    val confirmation: String,
-    val attachment: List<Attachment>
-)
+    val attachment: @RawValue List<Attachment>,
+    val symptoms: @RawValue List<Symptoms>,
+    val precautions: @RawValue List<Precautions>
+) : Parcelable
 
 data class DiseaseWithResult(
     val disease: Disease,
@@ -34,3 +39,17 @@ data class DiseaseWithResult(
 data class Attachment(
     val url: String
 )
+
+@Parcelize
+data class Symptoms(
+    val id: Int,
+    val name: String,
+    val description: String
+) : Parcelable
+
+@Parcelize
+data class Precautions(
+    val id: Int,
+    val title: String,
+    val description: String
+) : Parcelable

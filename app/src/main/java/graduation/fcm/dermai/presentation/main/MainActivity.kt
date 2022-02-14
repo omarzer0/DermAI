@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     showToolBar()
                 }
 
-                R.id.scanFragment -> {
+                R.id.scanFragment, R.id.detailsFragment, R.id.doctorFragment -> {
                     hideBottomNav()
                     showToolBar()
                 }

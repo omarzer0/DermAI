@@ -4,33 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".presentation.main.details.DetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-        <ImageView
-            android:id="@+id/disease_image_rv"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_200sdp"
+        <!--        <ImageView-->
+        <!--            android:id="@+id/disease_image_rv"-->
+        <!--            android:layout_width="@dimen/_200sdp"-->
+        <!--            android:layout_height="@dimen/_200sdp"-->
+        <!--            android:layout_marginTop="@dimen/_25sdp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:srcCompat="@tools:sample/avatars" />-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/image_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_slider_mediator_tl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/image_view_pager"
+                app:tabIndicatorHeight="0dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/slider_text_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/_8sdp"
+                android:background="@drawable/search_round_background"
+                android:backgroundTint="#707070"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="@+id/image_view_pager"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/image_view_pager">
+
+                <TextView
+                    android:id="@+id/slider_counter_tv"
+                    style="@style/headerTextStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1/5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_12sdp"
             app:cardCornerRadius="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/disease_image_rv">
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -62,15 +128,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title_tv"
-                    tools:text="Test" />
+                    app:layout_constraintTop_toBottomOf="@+id/title_tv" />
 
                 <TextView
                     android:id="@+id/description_disease_tv"
                     style="@style/bodyTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:textColor="@color/blackTextColor"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,91 +148,93 @@
                     tools:text="@tools:sample/lorem" />
 
                 <TextView
-                    android:id="@+id/self_care_title_tv"
+                    android:id="@+id/symptoms_title_tv"
                     style="@style/headerTextStyleSmall"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_12sdp"
-                    android:text="@string/self_care__"
+                    android:text="@string/symptoms__"
                     android:textColor="@color/blackTextColor"
                     app:layout_constraintEnd_toEndOf="parent"
-
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/description_disease_tv" />
 
                 <TextView
-                    android:id="@+id/self_description_tv"
+                    android:id="@+id/symptoms_description_tv"
                     style="@style/bodyTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:textColor="@color/blackTextColor"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/self_care_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/symptoms_title_tv"
                     tools:text="Test" />
 
                 <TextView
-                    android:id="@+id/adds_title_tv"
-                    style="@style/headerTextStyleSmall"
-                    android:layout_width="match_parent"
-
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"
-                    android:text="@string/adds__"
-                    android:textColor="@color/blackTextColor"
-                    app:layout_constraintEnd_toEndOf="parent"
-
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/self_description_tv" />
-
-                <TextView
-                    android:id="@+id/adds_description_tv"
-                    style="@style/bodyTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/blackTextColor"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/adds_title_tv"
-                    tools:text="Test" />
-
-                <TextView
-                    android:id="@+id/section_title_tv"
+                    android:id="@+id/precautions_title_tv"
                     style="@style/headerTextStyleSmall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_12sdp"
-                    android:text="@string/section__"
+                    android:text="@string/precautions__"
                     android:textColor="@color/blackTextColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/adds_description_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/symptoms_description_tv" />
 
                 <TextView
-                    android:id="@+id/section_description_tv"
+                    android:id="@+id/precautions_description_tv"
                     style="@style/bodyTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_12sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:textColor="@color/blackTextColor"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/section_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/precautions_title_tv"
                     tools:text="Test" />
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/section_title_tv"-->
+                <!--                    style="@style/headerTextStyleSmall"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="@dimen/_12sdp"-->
+                <!--                    android:text="@string/section__"-->
+                <!--                    android:textColor="@color/blackTextColor"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintHorizontal_bias="0"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/adds_description_tv" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/section_description_tv"-->
+                <!--                    style="@style/bodyTextStyle"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="@dimen/_12sdp"-->
+                <!--                    android:textColor="@color/blackTextColor"-->
+                <!--                    android:textStyle="normal"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintHorizontal_bias="0"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/section_title_tv"-->
+                <!--                    tools:text="Test" />-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

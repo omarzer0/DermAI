@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import graduation.fcm.dermai.common.setImageUsingGlide
 import graduation.fcm.dermai.databinding.ItemImageSliderBinding
-import graduation.fcm.dermai.databinding.ItemResultDiseaseBinding
-import graduation.fcm.dermai.databinding.ItemSliderBinding
 
 class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderViewHolder>() {
 
@@ -26,7 +24,6 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
         return ImageSliderViewHolder(binding)
     }
 
-
     override fun onBindViewHolder(holder: ImageSliderViewHolder, position: Int) {
         val currentItem = items[position]
         holder.bind(currentItem)
@@ -37,7 +34,8 @@ class ImageSliderAdapter : RecyclerView.Adapter<ImageSliderAdapter.ImageSliderVi
     inner class ImageSliderViewHolder(private val binding: ItemImageSliderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(currentItem: String) {
-            setImageUsingGlide(binding.sliderImageIv,currentItem)
+            // TODO: use current image ya beeeh
+            setImageUsingGlide(binding.sliderImageIv, "")
         }
     }
 

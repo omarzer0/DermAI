@@ -28,8 +28,13 @@ class HomeRepositoryImpl @Inject constructor(
 
     suspend fun getScanHistory() = api.getScanHistory(pref.token)
 
-
     suspend fun confirmOrUnConfirm(resultId: Int, diseaseId: Int) =
         api.confirmOrUnConfirm(resultId, diseaseId, pref.token)
+
+    suspend fun getSingleScanHistory(diseaseId: Int) =
+        api.getSingleScanHistory(diseaseId, pref.token)
+
+    suspend fun getDoctors(longitude: Double, latitude: Double) =
+        api.getDoctors(longitude, latitude, pref.token)
 
 }

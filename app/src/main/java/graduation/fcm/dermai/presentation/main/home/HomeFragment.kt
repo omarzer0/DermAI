@@ -22,7 +22,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     private val historyAdapter = HistoryAdapter { diseaseId ->
-        val action = HomeFragmentDirections.actionHomeFragmentToScanFragment(diseaseId)
+        val action = HomeFragmentDirections.actionHomeFragmentToResultFragment(diseaseId)
         navigate(action)
     }
 
