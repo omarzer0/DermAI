@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import graduation.fcm.dermai.common.setImageUsingGlide
 import graduation.fcm.dermai.databinding.ItemSearchDiseaseBinding
+import graduation.fcm.dermai.domain.model.home.Disease
 import graduation.fcm.dermai.domain.model.home.SearchResult
 
 class SearchHistoryAdapter(
-    val onSearchClick: (Int) -> Unit
+    val onSearchClick: (Disease) -> Unit
 ) :
     ListAdapter<SearchResult, SearchHistoryAdapter.SearchHistoryViewHolder>(DiffCallback()) {
 
@@ -33,7 +34,7 @@ class SearchHistoryAdapter(
 
         init {
             binding.root.setOnClickListener {
-                onSearchClick(getItem(adapterPosition).id)
+                onSearchClick(getItem(adapterPosition).disease)
             }
         }
 

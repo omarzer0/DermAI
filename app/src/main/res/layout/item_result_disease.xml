@@ -12,66 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_8sdp">
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/iv_disease_image"-->
-        <!--            android:layout_width="@dimen/_100sdp"-->
-        <!--            android:layout_height="@dimen/_100sdp"-->
-        <!--            android:layout_marginTop="@dimen/_12sdp"-->
-        <!--            android:scaleType="fitXY"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            tools:src="@tools:sample/avatars" />-->
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/image_view_pager"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/slider_rv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_slider_mediator_tl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/image_view_pager"
-            app:tabIndicatorHeight="0dp" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/slider_text_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/search_round_background"
-            android:backgroundTint="#707070"
-            android:paddingStart="@dimen/_12sdp"
-            android:paddingTop="@dimen/_8sdp"
-            android:paddingEnd="@dimen/_12sdp"
-            android:paddingBottom="@dimen/_8sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/image_view_pager">
-
-            <TextView
-                android:id="@+id/slider_counter_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="1/5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                style="@style/headerTextStyleSmall"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_image_slider" />
 
         <TextView
             android:id="@+id/disease_title_tv"
@@ -85,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.003"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_pager"
+            app:layout_constraintTop_toBottomOf="@+id/slider_rv"
             tools:text="@tools:sample/lorem" />
 
         <TextView

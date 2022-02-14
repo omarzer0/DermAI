@@ -13,14 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentDetailsBinding
 import graduation.fcm.dermai.domain.model.home.Disease
-import graduation.fcm.dermai.presentation.main.adapter.ImageSliderAdapter
+import graduation.fcm.dermai.presentation.main.adapter.ImageDetailsSliderAdapter
 
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     override val viewModel: DetailsViewModel by viewModels()
     override fun selfHandleObserveState(): Boolean = false
-    private val imageSliderAdapter = ImageSliderAdapter()
+    private val imageSliderAdapter = ImageDetailsSliderAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

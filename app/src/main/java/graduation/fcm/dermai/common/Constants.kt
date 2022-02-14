@@ -1,6 +1,6 @@
 package graduation.fcm.dermai.common
 
-const val timeOut = 120L
+const val timeOut = 35L
 const val BASE_URL = "http://dls-grad.spider-te8.com/api/v1/"
 const val IS_DEBUG = true
 const val SHARED_PREFERENCES_NAME = "dermai_shared_preferences_file_name"
@@ -14,4 +14,3 @@ const val NETWORK_ERROR =  "Check your internet connection!"
 const val NOT_AUTHORIZED_ERROR =  "Session expired please login again"
 const val EMAIL_REG = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$"
 const val IMAGE_SEND_KEY = "img"
-

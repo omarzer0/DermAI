@@ -41,7 +41,8 @@ data class DiseaseWithResult(
 data class SearchResult(
     val id: Int,
     val name: String,
-    val image: String
+    val image: String,
+    val disease: Disease
 )
 
 data class Attachment(

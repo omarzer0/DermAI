@@ -25,6 +25,7 @@
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_empty.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_home.xml" value="0.15218331171638563" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_medicine.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_onboarding.xml" value="0.35185185185185186" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_questions.xml" value="0.33" />
@@ -34,9 +35,11 @@
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_search.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_slider.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_answer.xml" value="0.33" />
+        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_details_image_slider.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_doctor.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_home_disease.xml" value="0.25" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_image_slider.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_medicine.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_result_disease.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_search_disease.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_slider.xml" value="0.33" />

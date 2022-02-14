@@ -25,14 +25,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun selfHandleObserveState(): Boolean = false
 
     private val searchHistoryAdapter = SearchHistoryAdapter {
-//        navigate(
-//            SearchFragmentDirections.actionSearchFragmentToResultFragment(
-//                FromScreen.SEARCH,
-//                "",
-//                it,
-//                ""
-//            )
-//        )
+        navigate(
+            SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
+                it, false
+            )
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +47,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 is ResponseState.Error -> {
                     binding.textView3.gone()
                 }
-                is ResponseState.Loading -> { }
+                is ResponseState.Loading -> {
+                }
                 is ResponseState.NotAuthorized -> logOut()
                 is ResponseState.Success -> {
                     val data = it.data?.data ?: return@observe
@@ -67,7 +65,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                                 disease.attachment[0].url
                             } else {
                                 ""
-                            }
+                            },
+                            disease
                         )
                     }
 
