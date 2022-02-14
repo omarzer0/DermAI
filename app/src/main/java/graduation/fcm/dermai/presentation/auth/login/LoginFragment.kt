@@ -1,7 +1,11 @@
 package graduation.fcm.dermai.presentation.auth.login
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +13,11 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.R
 import graduation.fcm.dermai.common.EMAIL_REG
-import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.common.extentions.gone
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentLoginBinding
-import graduation.fcm.dermai.presentation.auth.AuthActivity
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
@@ -57,7 +59,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 getDataFromViews()
             }
         }
-
     }
 
     private fun getDataFromViews() {

@@ -41,40 +41,40 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
 
     protected fun <T : BaseResponse> networkCall(
         action: suspend () -> Response<T>,
-        onReply: (ResponseState<T>) -> Unit,
+        onReply: ((ResponseState<T>) -> Unit)? = null,
         showLoading: Boolean = true
     ) {
         viewModelScope.launch {
-            if (showLoading) onReply(ResponseState.Loading())
+            if (showLoading) onReply?.invoke(ResponseState.Loading())
             try {
                 val response = action()
                 if (response.isSuccessful) {
                     val body = response.body() ?: return@launch
                     if (body.error.isNotEmpty()) {
                         // error from api
-                        onReply(ResponseState.Error(body.error))
+                        onReply?.invoke(ResponseState.Error(body.error))
                         Log.e("networkCall", "error ${body.error}")
                     } else {
                         // success
-                        onReply(ResponseState.Success(body))
+                        onReply?.invoke(ResponseState.Success(body))
                         Log.e("networkCall", "success ${response.code()} $body")
                     }
 
                 } else {
                     when (response.code()) {
                         401 -> {
-                            onReply(ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR))
+                            onReply?.invoke(ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR))
                             Log.e("networkCall", "error ${response.code()} not auth")
                         }
                         else -> {
-                            onReply(ResponseState.Error(UNKNOWN_ERROR))
+                            onReply?.invoke(ResponseState.Error(UNKNOWN_ERROR))
                             Log.e("networkCall", "error ${response.code()} ${response.errorBody()}")
                         }
                     }
                 }
             } catch (e: Exception) {
                 // network error
-                onReply(ResponseState.Error(NETWORK_ERROR))
+                onReply?.invoke(ResponseState.Error(NETWORK_ERROR))
                 Log.e("networkCall", "network error ${e.localizedMessage}")
             }
         }

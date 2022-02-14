@@ -8,6 +8,8 @@ import graduation.fcm.dermai.common.ResponseState
 import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.core.BaseViewModel
 import graduation.fcm.dermai.domain.model.home.ScanResponse
+import graduation.fcm.dermai.presentation.main.utils.FromScreen
+import graduation.fcm.dermai.presentation.main.utils.FromScreen.*
 import graduation.fcm.dermai.repository.HomeRepositoryImpl
 import javax.inject.Inject
 
@@ -18,7 +20,12 @@ class ResultViewModel @Inject constructor(
     private val stateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
+    private val fromScreen = stateHandle.get<FromScreen>("fromScreen") ?: SCAN
     private val diseaseId = stateHandle.get<Int>("diseaseId") ?: -1
+    private val searchQuery = stateHandle.get<String>("searchQuery") ?: ""
+    private val imgUrl = stateHandle.get<String>("imgUrl") ?: ""
+    val shouldSave = fromScreen == SEARCH
+
 
     private val _scanResult = MutableLiveData<ResponseState<ScanResponse>>()
     val scanResult: LiveData<ResponseState<ScanResponse>> = _scanResult
@@ -41,13 +48,22 @@ class ResultViewModel @Inject constructor(
         })
     }
 
+    private fun getDiseaseSearchResult(searchQuery: String) {
+        networkCall({ repo.getDiseaseSearchResult(searchQuery) }, {
+            _scanResult.value = it
+        })
+    }
+
     init {
-        if (diseaseId != -1) {
-            getSingleScanHistory(diseaseId)
-        } else {
-            val uri = sharedPreferenceManger.imageUri
-            if (uri.isNotEmpty()) {
-                uploadDiseaseImage(uri)
+        when (fromScreen) {
+            HOME -> {
+                if (diseaseId != -1) getSingleScanHistory(diseaseId)
+            }
+            SCAN -> {
+                if (imgUrl.isNotEmpty()) uploadDiseaseImage(imgUrl)
+            }
+            SEARCH -> {
+                if (searchQuery.isNotEmpty()) getDiseaseSearchResult(searchQuery)
             }
         }
 

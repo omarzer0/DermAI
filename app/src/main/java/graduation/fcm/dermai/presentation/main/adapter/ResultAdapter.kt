@@ -38,10 +38,12 @@ class ResultAdapter(
 
         init {
             binding.tvConfirmed.setOnClickListener {
-                onConfirmClick(
-                    getItem(adapterPosition).result.id,
-                    getItem(adapterPosition).disease.id
-                )
+                getItem(adapterPosition).result?.id?.let { result ->
+                    onConfirmClick(
+                        result,
+                        getItem(adapterPosition).disease.id
+                    )
+                }
             }
 
             binding.tvMoreDetails.setOnClickListener { onMoreClick(getItem(adapterPosition).disease) }
@@ -54,12 +56,18 @@ class ResultAdapter(
                 diseaseTitleTv.text = currentItem.disease.name
                 diseaseDescriptionTv.text =
                     currentItem.disease.description ?: "Don't return null yabny!!!!"
-                val diseaseId = currentItem.result.disease_id
-                if (diseaseId == null) {
-                    tvConfirmed.text = "Confirm"
+
+
+                if (currentItem.result != null) {
+                    val diseaseId = currentItem.result.disease_id
+                    if (diseaseId == null) {
+                        tvConfirmed.text = "Confirm"
+                    } else {
+                        if (currentItem.disease.id == diseaseId) tvConfirmed.text = "Unconfirmed"
+                        else tvConfirmed.hide()
+                    }
                 } else {
-                    if (currentItem.disease.id == diseaseId) tvConfirmed.text = "Unconfirmed"
-                    else tvConfirmed.hide()
+                    tvConfirmed.hide()
                 }
             }
         }

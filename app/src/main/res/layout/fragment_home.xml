@@ -76,11 +76,12 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+
             android:id="@+id/tv_history"
             style="@style/headerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_18sdp"
             android:layout_marginTop="@dimen/_25sdp"
             android:text="@string/history"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,6 @@
 package graduation.fcm.dermai.presentation.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -36,7 +37,11 @@ class DoctorAdapter :
                 doctorDescription.text = currentItem.specialization
                 doctorLocation.text = currentItem.location
                 doctorPrice.text = "${currentItem.price} EGP"
-                doctorRate.numStars = currentItem.feedback.toInt()
+                try {
+                    doctorRate.numStars = currentItem.feedback.toInt()
+                } catch (e: Exception) {
+                    Log.e("DoctorAdapter", "bind: ${e.localizedMessage}")
+                }
             }
         }
     }

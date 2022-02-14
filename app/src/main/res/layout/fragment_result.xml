@@ -73,6 +73,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loading_pb_view"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_no_result_text"
+            style="@style/headerTextStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:gravity="center"
+            android:maxLines="99"
+            android:text="@string/no_result_found"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="gone" />
 
         <androidx.constraintlayout.widget.Group
@@ -97,6 +114,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             tools:visibility="visible" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

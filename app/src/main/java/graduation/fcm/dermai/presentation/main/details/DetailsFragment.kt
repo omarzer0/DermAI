@@ -58,6 +58,17 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         }
     }
 
+    private fun handleClicks() {
+        binding.getMedicineBtn.setOnClickListener {
+            val diseaseId = viewModel.disease.value?.id ?: return@setOnClickListener
+            navigate(DetailsFragmentDirections.actionDetailsFragmentToMedicineFragment(diseaseId))
+        }
+
+        binding.getDoctorBtn.setOnClickListener {
+            navigate(DetailsFragmentDirections.actionDetailsFragmentToDoctorFragment())
+        }
+    }
+
     private fun setUpImageSlider(binding: FragmentDetailsBinding, currentItem: Disease) {
         val attachments = currentItem.attachment
         val urlList = attachments.map { it.url }
@@ -87,13 +98,6 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
         })
     }
 
-    private fun handleClicks() {
-        binding.getMedicineBtn.setOnClickListener { }
-
-        binding.getDoctorBtn.setOnClickListener {
-            navigate(DetailsFragmentDirections.actionDetailsFragmentToDoctorFragment())
-        }
-    }
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentDetailsBinding.inflate(inflater, container, false)

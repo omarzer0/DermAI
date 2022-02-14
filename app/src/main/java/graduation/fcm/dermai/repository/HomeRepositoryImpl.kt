@@ -34,7 +34,15 @@ class HomeRepositoryImpl @Inject constructor(
     suspend fun getSingleScanHistory(diseaseId: Int) =
         api.getSingleScanHistory(diseaseId, pref.token)
 
+    suspend fun getDiseaseSearchResult(searchQuery: String) =
+        api.getDiseaseSearchResult(searchQuery, pref.token)
+
     suspend fun getDoctors(longitude: Double, latitude: Double) =
         api.getDoctors(longitude, latitude, pref.token)
 
+    suspend fun updateSearchHistory(id: Int) = api.updateSearchHistory(id, pref.token)
+
+    suspend fun getSearchHistory() = api.getSearchHistory(pref.token)
+
+    suspend fun getMedicines(diseaseId: Int) = api.getMedicines(diseaseId, pref.token)
 }

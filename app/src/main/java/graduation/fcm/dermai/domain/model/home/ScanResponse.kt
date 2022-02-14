@@ -10,8 +10,10 @@ data class ScanResponse(
 ) : BaseResponse()
 
 data class ScanData(
-    val disease: List<Disease>,
-    val result: Result
+    val disease: List<Disease>?,
+    val diseases: List<Disease>?,
+    val history: List<Disease>?,
+    val result: Result?
 )
 
 data class Result(
@@ -33,7 +35,13 @@ data class Disease(
 
 data class DiseaseWithResult(
     val disease: Disease,
-    val result: Result
+    val result: Result?
+)
+
+data class SearchResult(
+    val id: Int,
+    val name: String,
+    val image: String
 )
 
 data class Attachment(

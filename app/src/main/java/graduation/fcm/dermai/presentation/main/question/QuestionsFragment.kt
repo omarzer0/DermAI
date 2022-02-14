@@ -13,6 +13,7 @@ import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentQuestionsBinding
 import graduation.fcm.dermai.domain.model.home.Question
 import graduation.fcm.dermai.presentation.main.adapter.AnswerAdapter
+import graduation.fcm.dermai.presentation.main.utils.FromScreen
 
 @AndroidEntryPoint
 class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
@@ -32,8 +33,16 @@ class QuestionsFragment : BaseFragment<FragmentQuestionsBinding>() {
     private fun observeQuestionState() {
         viewModel.state.observe(viewLifecycleOwner) { questionState ->
             handleQuestions(questionState.currentPosition, questionState.question)
+            val imageUrl = sharedPreferenceManger.imageUri
             if (questionState.shouldNavigateToAction)
-                navigate(QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(-1))
+                navigate(
+                    QuestionsFragmentDirections.actionQuestionsFragmentToResultFragment(
+                        FromScreen.SCAN,
+                        "",
+                        -1,
+                        imageUrl
+                    )
+                )
 
         }
     }

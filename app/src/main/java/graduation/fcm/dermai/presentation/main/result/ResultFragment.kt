@@ -27,7 +27,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     private val resultAdapter = ResultAdapter(onConfirmClick = { resultID, diseaseID ->
         viewModel.confirmOrUnConfirm(resultID, diseaseID)
     }, onMoreClick = {
-        navigate(ResultFragmentDirections.actionResultFragmentToDetailsFragment(it))
+        navigate(
+            ResultFragmentDirections.actionResultFragmentToDetailsFragment(
+                it,
+                viewModel.shouldSave
+            )
+        )
     })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +54,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
                     if (it.hasBeenHandled) return@observe
 
                     it.hasBeenHandled = true
+                    it.message?.let { it1 -> toastMy(it1) }
                     showOrHide(loading = false, success = false)
                 }
                 is ResponseState.Loading -> {
@@ -60,9 +66,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
                 is ResponseState.Success -> {
                     showOrHide(loading = false, success = true)
                     val data = it.data ?: return@observe
-                    Log.e("TAG", "observeData: $it")
-                    val diseaseWithResult = data.data.disease.map { disease ->
+                    Log.e("TAG", "observeData: ${it.data}")
+
+                    val diseaseToUse = data.data.disease ?: data.data.diseases
+                    val diseaseWithResult = diseaseToUse?.map { disease ->
                         DiseaseWithResult(disease, data.data.result)
+                    }
+                    if (diseaseWithResult.isNullOrEmpty()) {
+                        showOrHide(loading = false, success = true,true)
                     }
                     resultAdapter.submitList(diseaseWithResult)
                 }
@@ -76,25 +87,35 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
 
     }
 
-    private fun showOrHide(loading: Boolean, success: Boolean) {
+    private fun showOrHide(loading: Boolean, success: Boolean, empty: Boolean = false) {
         when {
             loading -> {
                 Log.e("ResultFragment", "loading...")
                 binding.loadingGroup.show()
                 binding.successGroup.gone()
                 binding.failGroup.gone()
+                binding.tvNoResultText.gone()
             }
             success -> {
-                Log.e("ResultFragment", "success...")
-                binding.loadingGroup.gone()
-                binding.successGroup.show()
-                binding.failGroup.gone()
+                if (empty) {
+                    binding.tvNoResultText.show()
+                    binding.loadingGroup.gone()
+                    binding.successGroup.gone()
+                    binding.failGroup.gone()
+                } else {
+                    Log.e("ResultFragment", "success...")
+                    binding.loadingGroup.gone()
+                    binding.successGroup.show()
+                    binding.failGroup.gone()
+                    binding.tvNoResultText.gone()
+                }
             }
             else -> {
                 Log.e("ResultFragment", "failed...")
                 binding.loadingGroup.gone()
                 binding.successGroup.gone()
                 binding.failGroup.show()
+                binding.tvNoResultText.gone()
             }
         }
     }

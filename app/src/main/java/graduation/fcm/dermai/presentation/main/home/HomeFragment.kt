@@ -12,6 +12,7 @@ import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentHomeBinding
 import graduation.fcm.dermai.presentation.main.adapter.HistoryAdapter
+import graduation.fcm.dermai.presentation.main.utils.FromScreen
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -22,7 +23,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         FragmentHomeBinding.inflate(inflater, container, false)
 
     private val historyAdapter = HistoryAdapter { diseaseId ->
-        val action = HomeFragmentDirections.actionHomeFragmentToResultFragment(diseaseId)
+        val action = HomeFragmentDirections.actionHomeFragmentToResultFragment(
+            FromScreen.HOME,
+            "",
+            diseaseId,
+            ""
+        )
         navigate(action)
     }
 
@@ -46,6 +52,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     binding.tvHistory.gone()
                 }
                 is ResponseState.Loading -> {
+                    binding.historyRv.gone()
+                    binding.tvHistory.gone()
                 }
                 is ResponseState.NotAuthorized -> {
                     logOut()
@@ -55,6 +63,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     binding.tvHistory.show()
                     val historyResponse = it.data ?: return@observe
                     val historyList = historyResponse.data.history
+                    if (historyList.isEmpty()) {
+                        binding.historyRv.gone()
+                        binding.tvHistory.gone()
+                    }
                     historyAdapter.submitList(historyList)
                 }
             }
