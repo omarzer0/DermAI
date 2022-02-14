@@ -12,7 +12,7 @@
         android:id="@+id/questions_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_black">
+        android:background="@drawable/bg">
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -22,8 +22,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:src="@drawable/ic_arrow_back_black_24dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -38,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_12sdp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/blackTextColor"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
