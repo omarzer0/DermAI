@@ -35,7 +35,7 @@ class MedicineAdapter :
                 medicineNameTv.text = currentItem.name
                 priceTv.text = "${currentItem.price} EGP"
                 try {
-                    medicineRb.numStars = currentItem.rating.toInt()
+                    medicineRb.numStars = (currentItem.rating.toInt() % 5)
                 } catch (e: Exception) {
                     Log.e("MedicineAdapter", "bind: ${e.localizedMessage}")
                 }
