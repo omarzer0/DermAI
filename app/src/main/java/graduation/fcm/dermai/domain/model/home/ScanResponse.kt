@@ -45,9 +45,10 @@ data class SearchResult(
     val disease: Disease
 )
 
+@Parcelize
 data class Attachment(
     val url: String
-)
+) : Parcelable
 
 @Parcelize
 data class Symptoms(
