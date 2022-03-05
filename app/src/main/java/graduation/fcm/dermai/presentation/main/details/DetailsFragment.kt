@@ -71,7 +71,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>() {
 
     private fun setUpImageSlider(binding: FragmentDetailsBinding, currentItem: Disease) {
         val attachments = currentItem.attachment
-        val urlList = attachments.map { it.url }
+        val urlList = attachments.mapNotNull { it.url }
         binding.sliderTextContainer.isVisible = urlList.isNotEmpty()
         binding.imageViewPager.adapter = imageSliderAdapter
         imageSliderAdapter.changeItems(urlList)

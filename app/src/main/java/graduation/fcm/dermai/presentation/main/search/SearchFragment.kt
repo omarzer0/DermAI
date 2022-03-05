@@ -61,11 +61,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                         SearchResult(
                             disease.id,
                             disease.name,
-                            if (disease.attachment.isNotEmpty()) {
-                                disease.attachment[0].url
-                            } else {
-                                ""
-                            },
+                            if (disease.attachment.isNotEmpty()) disease.attachment[0].url ?: ""
+                            else "",
                             disease
                         )
                     }

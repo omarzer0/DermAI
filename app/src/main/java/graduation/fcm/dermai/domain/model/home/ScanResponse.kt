@@ -47,7 +47,7 @@ data class SearchResult(
 
 @Parcelize
 data class Attachment(
-    val url: String
+    val url: String? = ""
 ) : Parcelable
 
 @Parcelize

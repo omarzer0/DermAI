@@ -54,7 +54,7 @@ class ResultAdapter(
                 val adapter = ImageSliderAdapter()
                 sliderRv.adapter = adapter
 
-                val urlList = currentItem.disease.attachment.map { it.url }
+                val urlList = currentItem.disease.attachment.mapNotNull { it.url }
                 adapter.changeItems(urlList)
 
                 diseaseTitleTv.text = currentItem.disease.name
