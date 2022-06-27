@@ -7,7 +7,7 @@
     tools:context=".presentation.main.search.SearchFragment">
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/searchBar"
         layout="@layout/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,12 +25,14 @@
         android:layout_marginTop="@dimen/_25sdp"
         android:text="@string/recent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginBottom="@dimen/_12sdp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

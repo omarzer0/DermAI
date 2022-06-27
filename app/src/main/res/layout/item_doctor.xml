@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_12sdp"
+    app:cardCornerRadius="@dimen/_8sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/doctor_iv"
+            style="@style/roundShapeableImage"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/doctor_name_tv"
+            style="@style/headerTextStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:maxLines="99"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toEndOf="@+id/doctor_iv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="DR/Mahmoud ZEWAIN asd sad sad s dasd sadasd sa" />
+
+        <TextView
+            android:id="@+id/more_description_tv"
+            style="@style/bodyTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:textColor="@color/blackTextColor"
+            app:layout_constraintBottom_toBottomOf="@+id/doctor_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/doctor_iv"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_name_tv"
+            tools:text="Professor and Consultant of Dermatology" />
+
+
+        <RatingBar
+            android:id="@+id/doctor_rate"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:numStars="5"
+            android:progressTint="#F2951C"
+            android:rating="5"
+            app:layout_constraintEnd_toEndOf="@+id/more_description_tv"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/more_description_tv"
+            app:layout_constraintTop_toBottomOf="@+id/more_description_tv" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/doc1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_rate" />
+
+        <TextView
+            android:id="@+id/doctor_description"
+            style="@style/bodyTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:textColor="@color/blackTextColor"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            tools:text="TextView" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/ic_place"
+            app:layout_constraintStart_toStartOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:tint="#02457A" />
+
+
+        <TextView
+            android:id="@+id/doctor_location"
+            style="@style/bodyTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:textColor="@color/blackTextColor"
+
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            tools:text="TextView" />
+
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/money"
+            app:layout_constraintStart_toStartOf="@+id/imageView9"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+
+        <TextView
+            android:id="@+id/doctor_price"
+            style="@style/bodyTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:textColor="@color/blackTextColor"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10"
+            tools:text="TextView" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/doc_contact_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@drawable/shape_rounded_bottom"
+            android:backgroundTint="#018ABE"
+            android:text="@string/contact"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_price" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

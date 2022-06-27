@@ -7,8 +7,8 @@ class AuthRepositoryImpl @Inject constructor(
     private val api: ApiService
 ) {
 
-    suspend fun register(name: String, email: String, password: String, gender: Int) =
-        api.register(name, email, password, gender)
+    suspend fun register(name: String, email: String, password: String) =
+        api.register(name, email, password)
 
     suspend fun login(email: String, password: String) = api.login(email, password)
 }

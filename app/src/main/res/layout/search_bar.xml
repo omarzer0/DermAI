@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/search_round_background_with_border"
     android:elevation="@dimen/_6sdp">
 
@@ -18,6 +18,7 @@
             android:id="@+id/search_icon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
             android:paddingStart="@dimen/_6sdp"
             android:paddingEnd="@dimen/_6sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,22 +41,24 @@
             android:singleLine="true"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/cancel_icon_iv"
+            app:layout_constraintEnd_toStartOf="@+id/send_search_icon_iv"
             app:layout_constraintStart_toEndOf="@+id/search_icon_iv"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/cancel_icon_iv"
+            android:id="@+id/send_search_icon_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:paddingStart="@dimen/_6sdp"
             android:paddingEnd="@dimen/_6sdp"
             android:visibility="gone"
-            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_cancel" />
+            app:srcCompat="@drawable/ic_send"
+            app:tint="@color/secondaryColor"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

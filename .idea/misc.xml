@@ -3,31 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/drawable/ic_check_circle.xml" value="0.362962962962963" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/drawable/tab_selector.xml" value="0.2045" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/fragment_home.xml" value="0.27815092848676415" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/fragment_onboarding.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/fragment_questions.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/layout/item_home_disease.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/DerimaGraduation/app/src/main/res/menu/menu_bottom.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/drawer_selected_item_bg.xml" value="0.3648148148148148" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ed_round_background_with_border.xml" value="0.3472222222222222" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_cancel.xml" value="0.35648148148148145" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_check_circle.xml" value="0.25" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_lock.xml" value="0.3472222222222222" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_no_image.xml" value="0.3648148148148148" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_opened_eye.xml" value="0.3472222222222222" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/ic_person.xml" value="0.3472222222222222" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/search_round_background.xml" value="0.35648148148148145" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/drawable/search_round_background_with_border.xml" value="0.3472222222222222" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/activity_auth.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_empty.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_login.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_onboarding.xml" value="0.36666666666666664" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_register.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_search.xml" value="0.33" />
+        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_home_disease.xml" value="0.25" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/item_search_disease.xml" value="0.36666666666666664" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/progress_bar_view.xml" value="0.36666666666666664" />
-        <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/layout/search_bar.xml" value="0.33" />
         <entry key="..\:/Projects/AndroidProjects/Dermai/app/src/main/res/menu/menu_bottom.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/fragment_medicine.xml" value="0.16111111111111112" />
+        <entry key="app/src/main/res/layout/item_doctor.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_medicine.xml" value="0.335" />
       </map>
     </option>
   </component>

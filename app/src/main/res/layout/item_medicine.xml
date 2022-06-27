@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8sdp"
+    app:cardCornerRadius="@dimen/_8sdp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/medicine_iv"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/medicine_name_tv"
+            style="@style/headerTextStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:maxLines="99"
+            android:textColor="@color/blackTextColor"
+            app:layout_constraintEnd_toEndOf="@+id/medicine_iv"
+            app:layout_constraintStart_toStartOf="@+id/medicine_iv"
+            app:layout_constraintTop_toBottomOf="@+id/medicine_iv"
+            tools:text="TextView" />
+
+        <RatingBar
+            android:id="@+id/medicine_rb"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:numStars="5"
+            android:progressTint="#F2951C"
+            android:rating="5"
+            app:layout_constraintStart_toStartOf="@+id/medicine_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/medicine_name_tv" />
+
+        <TextView
+            android:id="@+id/price_tv"
+            style="@style/bodyTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="@+id/medicine_rb"
+            app:layout_constraintTop_toBottomOf="@+id/medicine_rb"
+            tools:text="100 EGP" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/get_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/shape_rounded_bottom"
+            android:backgroundTint="#018ABE"
+            android:text="@string/get"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_tv"
+            app:layout_constraintVertical_bias="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

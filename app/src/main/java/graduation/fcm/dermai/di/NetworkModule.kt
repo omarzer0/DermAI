@@ -8,11 +8,14 @@ import graduation.fcm.dermai.BuildConfig
 import graduation.fcm.dermai.common.BASE_URL
 import graduation.fcm.dermai.common.timeOut
 import graduation.fcm.dermai.data.remote.ApiService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
@@ -51,4 +54,12 @@ object NetworkModule {
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
+    @ApplicationScope
+    @Provides
+    @Singleton
+    fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 }
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+annotation class ApplicationScope

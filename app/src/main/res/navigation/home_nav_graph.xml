@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_homeFragment_to_scanFragment"
             app:destination="@id/scanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -23,10 +27,81 @@
         android:id="@+id/searchFragment"
         android:name="graduation.fcm.dermai.presentation.main.search.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/scanFragment"
         android:name="graduation.fcm.dermai.presentation.main.scan.ScanFragment"
         android:label="Scan"
-        tools:layout="@layout/fragment_scan" />
+        tools:layout="@layout/fragment_scan">
+        <action
+            android:id="@+id/action_scanFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="graduation.fcm.dermai.presentation.main.question.QuestionsFragment"
+        tools:layout="@layout/fragment_questions">
+        <action
+            android:id="@+id/action_questionsFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="graduation.fcm.dermai.presentation.main.result.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <argument
+            android:name="fromScreen"
+            app:argType="graduation.fcm.dermai.presentation.main.utils.FromScreen" />
+        <argument android:name="searchQuery"
+            app:argType="string" />
+        <argument
+            android:name="diseaseId"
+            app:argType="integer" />
+        <argument android:name="imgUrl"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="graduation.fcm.dermai.presentation.main.details.DetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="disease"
+            app:argType="graduation.fcm.dermai.domain.model.home.Disease" />
+        <action
+            android:id="@+id/action_detailsFragment_to_doctorFragment"
+            app:destination="@id/doctorFragment" />
+        <argument
+            android:name="shouldSave"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_detailsFragment_to_medicineFragment"
+            app:destination="@id/medicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorFragment"
+        android:name="graduation.fcm.dermai.presentation.main.doctor.DoctorFragment"
+        android:label="Doctors"
+        tools:layout="@layout/fragment_doctor" />
+    <fragment
+        android:id="@+id/medicineFragment"
+        android:name="graduation.fcm.dermai.presentation.main.medicine.MedicineFragment"
+        android:label="Medicines"
+        tools:layout="@layout/fragment_medicine">
+        <argument
+            android:name="diseaseId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

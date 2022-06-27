@@ -11,6 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.R
+import graduation.fcm.dermai.common.extentions.gone
+import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
@@ -39,8 +41,53 @@ class MainActivity : AppCompatActivity() {
         )
 
         setupActionBarWithNavController(navController, appBarrConfiguration)
-
+        observeDestinations()
     }
+
+    private fun observeDestinations() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+
+                R.id.questionsFragment -> {
+                    hideBottomNav()
+                    hideToolBar()
+                }
+
+                R.id.resultFragment -> {
+                    hideBottomNav()
+                    showToolBar()
+                }
+
+                R.id.scanFragment, R.id.detailsFragment, R.id.doctorFragment, R.id.medicineFragment -> {
+                    hideBottomNav()
+                    showToolBar()
+                }
+
+                else -> {
+                    showBottomNav()
+                    showToolBar()
+                }
+            }
+        }
+    }
+
+    private fun showBottomNav() {
+        binding.bottomNavigationView.show()
+    }
+
+    private fun showToolBar() {
+        binding.toolbar.show()
+    }
+
+    private fun hideBottomNav() {
+        binding.bottomNavigationView.gone()
+        binding.toolbar.gone()
+    }
+
+    private fun hideToolBar() {
+        binding.toolbar.gone()
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarrConfiguration) || super.onSupportNavigateUp()

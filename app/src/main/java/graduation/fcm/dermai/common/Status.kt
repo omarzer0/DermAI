@@ -5,5 +5,13 @@ sealed class Status {
     data class Error(val message: String?) : Status()
     object Loading : Status()
     data class NotAuthorized(val message: String?) : Status()
+    data class TimeOut(val message: String?) : Status()
+    data class ServerError(val message: String?) : Status()
     object Empty : Status()
+}
+
+
+sealed class SimpleError {
+    data class Error(val message: String) : SimpleError()
+    data class NotAuthorized(val message: String) : SimpleError()
 }

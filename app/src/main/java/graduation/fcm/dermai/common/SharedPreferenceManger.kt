@@ -23,8 +23,13 @@ class SharedPreferenceManger @Inject constructor(
         get() = getBooleanValue(OPENED_THE_APP_BEFORE)
         set(value) = setValue(OPENED_THE_APP_BEFORE, value)
 
+    var imageUri: String
+        get() = getStringValue(IMAGE_URI) ?: ""
+        set(value) = setValue(IMAGE_URI, value)
+
     var token: String
-        get() = getStringValue(TOKEN) ?: EMPTY
+        get() = "Bearer ${getStringValue(TOKEN)}"
+        //        get() = "Bearer 33|rhOdHiV77I1obOSKI1xBgHJZCjg7uYRXGBW5CcDX"
         set(value) = setValue(TOKEN, value)
 
     fun setValue(key: String, value: String) {

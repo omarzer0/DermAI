@@ -8,19 +8,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.common.EMAIL_REG
-import graduation.fcm.dermai.common.SharedPreferenceManger
 import graduation.fcm.dermai.common.extentions.gone
+import graduation.fcm.dermai.common.extentions.hideKeyboard
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentLoginBinding
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    @Inject
-    lateinit var sharedPreferenceManger: SharedPreferenceManger
-
+    override fun selfHandleObserveState(): Boolean = false
     override val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
@@ -28,6 +26,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferenceManger.openedTheAppBefore = true
+
         handleClicks()
         observeData()
 
@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 toastMy(it.error)
                 return@observeIfNotHandled
             }
-            Log.e("observeData", "observeData: $it")
+            Log.e("observeData", it.data.token)
             sharedPreferenceManger.token = it.data.token
             sharedPreferenceManger.hasLoggedIn = true
             navigateToHomeActivity()
@@ -52,10 +52,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             signUpTv.setOnClickListener { navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment()) }
 
             loginBtn.setOnClickListener {
+                hideKeyboard()
                 getDataFromViews()
             }
         }
-
     }
 
     private fun getDataFromViews() {
