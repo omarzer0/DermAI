@@ -29,6 +29,15 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<ScanResponse>
 
+
+    @Multipart
+    @POST("diseases")
+    suspend fun uploadFakeDiseaseImage(
+        @Part img: MultipartBody.Part,
+        @Header("Authorization") token: String
+    ): Response<ScanResponse>
+
+
     @GET("get_user_data")
     suspend fun getUserData(
         @Header("Authorization") token: String

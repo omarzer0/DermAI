@@ -20,6 +20,8 @@ class ResultViewModel @Inject constructor(
     private val stateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
+    fun getFakeImageResult() = repo.imageResult
+
     private val fromScreen = stateHandle.get<FromScreen>("fromScreen") ?: SCAN
     private val diseaseId = stateHandle.get<Int>("diseaseId") ?: -1
     private val searchQuery = stateHandle.get<String>("searchQuery") ?: ""

@@ -1,7 +1,7 @@
 package graduation.fcm.dermai.common
 
 const val timeOut = 35L
-const val BASE_URL = "http://dls-grad.spider-te8.com/api/v1/"
+const val BASE_URL = "https://backend.dermai.app/api/v1/"
 const val IS_DEBUG = true
 const val SHARED_PREFERENCES_NAME = "dermai_shared_preferences_file_name"
 const val LOGGED_IN = "logged_in"

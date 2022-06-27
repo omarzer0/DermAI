@@ -9,10 +9,15 @@ import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import es.dmoral.toasty.Toasty
 import graduation.fcm.dermai.R
+import graduation.fcm.dermai.core.BaseResponse
+import graduation.fcm.dermai.di.ApplicationScope
 import gun0912.tedimagepicker.builder.TedImagePicker
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Response
 import java.io.File
 
 fun toastMy(
@@ -88,6 +93,48 @@ fun pickImage(context: Context, action: (Uri) -> Unit) {
         .start { uri ->
             action(uri)
         }
+}
+
+fun <T : BaseResponse> networkCallGlobal(
+    scope: CoroutineScope,
+    action: suspend () -> Response<T>,
+    onReply: ((ResponseState<T>) -> Unit)? = null,
+    showLoading: Boolean = true
+) {
+    scope.launch {
+        if (showLoading) onReply?.invoke(ResponseState.Loading())
+        try {
+            val response = action()
+            if (response.isSuccessful) {
+                val body = response.body() ?: return@launch
+                if (body.error.isNotEmpty()) {
+                    // error from api
+                    onReply?.invoke(ResponseState.Error(body.error))
+                    Log.e("networkCall", "error ${body.error}")
+                } else {
+                    // success
+                    onReply?.invoke(ResponseState.Success(body))
+                    Log.e("networkCall", "success ${response.code()} $body")
+                }
+
+            } else {
+                when (response.code()) {
+                    401 -> {
+                        onReply?.invoke(ResponseState.NotAuthorized(NOT_AUTHORIZED_ERROR))
+                        Log.e("networkCall", "error ${response.code()} not auth")
+                    }
+                    else -> {
+                        onReply?.invoke(ResponseState.Error(UNKNOWN_ERROR))
+                        Log.e("networkCall", "error ${response.code()} ${response.errorBody()}")
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            // network error
+            onReply?.invoke(ResponseState.Error(NETWORK_ERROR))
+            Log.e("networkCall", "network error ${e.localizedMessage}")
+        }
+    }
 }
 
 

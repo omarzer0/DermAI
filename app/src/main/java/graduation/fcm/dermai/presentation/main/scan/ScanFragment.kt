@@ -13,7 +13,6 @@ import graduation.fcm.dermai.common.*
 import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentScanBinding
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -50,6 +49,7 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
         binding.uploadImageBtn.setOnClickListener {
             val uri = viewModel.currentImage.value ?: return@setOnClickListener
             sharedPreferenceManger.imageUri = uri.toString()
+            viewModel.fakeUploadImage(uri)
             navigate(ScanFragmentDirections.actionScanFragmentToQuestionsFragment())
         }
     }

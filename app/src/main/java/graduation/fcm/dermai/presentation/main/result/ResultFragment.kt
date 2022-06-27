@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.common.ResponseState
 import graduation.fcm.dermai.common.extentions.gone
@@ -14,6 +15,7 @@ import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentResultBinding
 import graduation.fcm.dermai.domain.model.home.DiseaseWithResult
 import graduation.fcm.dermai.presentation.main.adapter.ResultAdapter
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class ResultFragment : BaseFragment<FragmentResultBinding>() {
@@ -48,6 +50,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     }
 
     private fun observeData() {
+        Log.e("ObserveFakeData", "fragment out:")
+        viewModel.getFakeImageResult().observe(viewLifecycleOwner){
+            Log.e("ObserveFakeData", "fragment in: $it")
+        }
+
         viewModel.scanResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseState.Error -> {
