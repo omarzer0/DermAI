@@ -1,24 +1,23 @@
 package graduation.fcm.dermai.presentation
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import graduation.fcm.dermai.R
+import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.core.BaseViewModel
 import graduation.fcm.dermai.databinding.FragmentEmptyBinding
 
 @AndroidEntryPoint
-class EmptyFragment : Fragment(R.layout.fragment_empty) {
+class EmptyFragment : BaseFragment<FragmentEmptyBinding>() {
 
-    val viewModel: BaseViewModel by viewModels()
-    private lateinit var binding: FragmentEmptyBinding
-
+    override val viewModel: BaseViewModel by viewModels()
+    override fun selfHandleObserveState(): Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentEmptyBinding.bind(view)
         handleClicks()
 
     }
@@ -26,6 +25,9 @@ class EmptyFragment : Fragment(R.layout.fragment_empty) {
     private fun handleClicks() {
 
     }
+
+    override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
+        FragmentEmptyBinding.inflate(inflater, container, false)
 
 
 }

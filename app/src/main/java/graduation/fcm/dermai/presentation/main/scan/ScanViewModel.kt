@@ -1,0 +1,26 @@
+package graduation.fcm.dermai.presentation.main.scan
+
+import android.net.Uri
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
+import graduation.fcm.dermai.common.ResponseState
+import graduation.fcm.dermai.core.BaseViewModel
+import graduation.fcm.dermai.domain.model.home.ScanResponse
+import graduation.fcm.dermai.repository.HomeRepositoryImpl
+import javax.inject.Inject
+
+@HiltViewModel
+class ScanViewModel @Inject constructor(
+    private val repo: HomeRepositoryImpl
+) : BaseViewModel() {
+
+    fun fakeUploadImage(uri: Uri) {
+        repo.fakeUploadImage(uri)
+    }
+
+    val currentImage = MutableLiveData<Uri>()
+
+
+}
+
