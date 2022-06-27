@@ -1,6 +1,5 @@
 package graduation.fcm.dermai.domain.model.home
 
-import android.util.Log
 import graduation.fcm.dermai.core.BaseResponse
 
 data class HistoryResponse(

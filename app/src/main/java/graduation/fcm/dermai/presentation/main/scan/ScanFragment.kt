@@ -37,12 +37,12 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
         viewModel.currentImage.observe(viewLifecycleOwner) {
             setImageUsingGlide(binding.chosenImageIv, it.toString())
             binding.uploadImageBtn.show()
-            binding.takeImageBtn.text = getString(R.string.select_another_image)
+//            binding.takeImageIv.text = getString(R.string.select_another_image)
         }
     }
 
     private fun handleClicks() {
-        binding.takeImageBtn.setOnClickListener {
+        binding.takeImageIv.setOnClickListener {
             checkMyPermissions()
         }
 

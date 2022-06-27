@@ -36,6 +36,7 @@
     <string name="section__">Section:</string>
     <string name="dummy_long_text">fasf safj afjsd iojfa dsjfi asdfijdsif jdiasd fisidf jdisofj sdijfpasdjf isdfjpdsjfiasdj dijf dtuja8rth dscnfdsfuedth yhsfgjasdphfbanpdfhau pyhr [ajsg</string>
     <string name="get_medicines">Get Medicines</string>
+    <string name="medicines">Medicines</string>
     <string name="get_a_doctor">Get a Doctor</string>
     <string name="start">Start</string>
     <string name="logout">Logout</string>
@@ -49,4 +50,5 @@
     <string name="category_1">Category 1</string>
     <string name="get">Get</string>
     <string name="category_2">Category 2</string>
+    <string name="insert_data">Please insert you data blow</string>
 </resources>

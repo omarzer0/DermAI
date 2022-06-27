@@ -1,6 +1,6 @@
 package graduation.fcm.dermai.common
 
-const val timeOut = 35L
+const val timeOut = 120L
 const val BASE_URL = "https://backend.dermai.app/api/v1/"
 const val IS_DEBUG = true
 const val SHARED_PREFERENCES_NAME = "dermai_shared_preferences_file_name"

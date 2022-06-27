@@ -49,7 +49,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun handleClick() {
-        binding.btnLogout.setOnClickListener { logOut() }
+        binding.logoutCl.setOnClickListener { logOut() }
     }
 
 }

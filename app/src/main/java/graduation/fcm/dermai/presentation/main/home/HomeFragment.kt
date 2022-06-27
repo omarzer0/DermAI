@@ -80,8 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun handleClicks() {
         binding.apply {
-//            newCaseCv.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
-            goToScanBtn.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
+            goToScanView.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
         }
     }
 
