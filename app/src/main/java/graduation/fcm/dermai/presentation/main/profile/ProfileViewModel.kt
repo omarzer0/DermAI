@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import graduation.fcm.dermai.core.BaseViewModel
+import graduation.fcm.dermai.domain.model.home.User
 import graduation.fcm.dermai.domain.model.home.UserData
 import graduation.fcm.dermai.domain.model.home.UserResponse
 import graduation.fcm.dermai.repository.HomeRepositoryImpl
@@ -23,7 +24,7 @@ class ProfileViewModel @Inject constructor(
             _userResult.value = it
         }, errorResponse = {
             Log.e("TAG", "uploadDiseaseImage: error")
-            val errorResponse = UserResponse(UserData("", "", "", "", ""))
+            val errorResponse = UserResponse(UserData(User("", "", "", "", "")))
             errorResponse.error = it
             _userResult.value = errorResponse
         })

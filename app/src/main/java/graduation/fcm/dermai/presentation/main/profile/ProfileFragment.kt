@@ -37,9 +37,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
             Log.e("ProfileFragment", "$it")
             binding.apply {
-                usernameTv.text = it.data.name
-                emailTv.text = it.data.email
-                setImageUsingGlide(userImageIv, it.data.avatar)
+                usernameTv.text = it.data.user.name
+                emailTv.text = it.data.user.email
+                setImageUsingGlide(userImageIv, it.data.user.avatar)
                 skinTypeTv.text = "Normal"
                 skinColorIv.setBackgroundColor(Color.parseColor("#E8BEAC"))
                 ageTv.text = "21"

@@ -8,10 +8,13 @@ data class MedicineResponse(
 ) : BaseResponse()
 
 data class MedicineData(
-    @SerializedName("disease_medicines")
-    val diseaseMedicines: List<Medicine>,
-    @SerializedName("category_medicines")
-    val categoryMedicines: List<Medicine>
+    @SerializedName("medicines")
+    val medicines: List<Medicine>
+
+//    @SerializedName("medicines")
+//    val diseaseMedicines: List<Medicine>,
+//    @SerializedName("medicines")
+//    val categoryMedicines: List<Medicine>
 )
 
 data class Medicine(
@@ -20,8 +23,9 @@ data class Medicine(
     @SerializedName("image")
     val rating: Double,
     val price: Double,
-    @SerializedName("image_url")
-    val imageUrl: String,
+//    @SerializedName("image_url")
+//    val imageUrl: String,
     @SerializedName("order_url")
-    val orderUrl: String
+    val orderUrl: String,
+    val attachment: List<Attachment>
 )

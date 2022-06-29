@@ -31,7 +31,7 @@ class MedicineAdapter :
 
         fun bind(currentItem: Medicine) {
             binding.apply {
-                setImageUsingGlide(medicineIv, currentItem.imageUrl)
+                setImageUsingGlide(medicineIv, currentItem.attachment.)
                 medicineNameTv.text = currentItem.name
                 priceTv.text = "${currentItem.price} EGP"
                 try {

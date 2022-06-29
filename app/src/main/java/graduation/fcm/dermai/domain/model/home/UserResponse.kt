@@ -8,6 +8,10 @@ data class UserResponse(
 ) : BaseResponse()
 
 data class UserData(
+    val user: User
+)
+
+data class User(
     val name: String,
     val email: String,
     val gender: String,

@@ -38,26 +38,40 @@
             android:layout_width="@dimen/_38sdp"
             android:layout_height="@dimen/_38sdp"
             android:layout_marginBottom="@dimen/_32sdp"
-            android:src="@drawable/ic_camera_round"
+            android:src="@drawable/ic_camera"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/upload_image_iv"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:tint="@color/mainColor" />
 
-        <Button
-            android:id="@+id/upload_image_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:text="@string/scan_image"
+        <ImageView
+            android:id="@+id/upload_image_iv"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="@dimen/_38sdp"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/take_image_iv"
-            app:layout_constraintEnd_toEndOf="@+id/take_image_iv"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/take_image_iv"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/take_image_iv"
-            app:layout_constraintTop_toBottomOf="@+id/chosen_image_cv"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintStart_toEndOf="@+id/take_image_iv"
+            app:layout_constraintTop_toTopOf="@+id/take_image_iv"
+            tools:src="@tools:sample/avatars" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/upload_image_btn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="@dimen/_25sdp"-->
+        <!--            android:layout_marginBottom="@dimen/_12sdp"-->
+        <!--            android:text="@string/scan_image"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/take_image_iv"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/take_image_iv"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/take_image_iv"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/chosen_image_cv"-->
+        <!--            app:layout_constraintVertical_bias="0.5" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

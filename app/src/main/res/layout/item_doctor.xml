@@ -14,8 +14,9 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/doctor_iv"
             style="@style/roundShapeableImage"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_margin="@dimen/_8sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -26,26 +27,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
-            android:maxLines="99"
+            android:maxLines="1"
+            app:layout_constraintBottom_toTopOf="@+id/qualification_name_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/doctor_iv"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="DR/Mahmoud ZEWAIN asd sad sad s dasd sadasd sa" />
 
         <TextView
-            android:id="@+id/more_description_tv"
+            android:id="@+id/qualification_name_tv"
             style="@style/bodyTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
             android:textColor="@color/blackTextColor"
-            app:layout_constraintBottom_toBottomOf="@+id/doctor_iv"
+            app:layout_constraintBottom_toTopOf="@+id/doctor_rate"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/doctor_iv"
             app:layout_constraintTop_toBottomOf="@+id/doctor_name_tv"
             tools:text="Professor and Consultant of Dermatology" />
@@ -56,24 +57,22 @@
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
             android:numStars="5"
             android:progressTint="#F2951C"
             android:rating="5"
-            app:layout_constraintEnd_toEndOf="@+id/more_description_tv"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/more_description_tv"
-            app:layout_constraintTop_toBottomOf="@+id/more_description_tv" />
+            app:layout_constraintBottom_toBottomOf="@+id/doctor_iv"
+            app:layout_constraintStart_toStartOf="@+id/qualification_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/qualification_name_tv" />
 
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             android:src="@drawable/doc1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_rate" />
+            app:layout_constraintTop_toBottomOf="@+id/doctor_iv" />
 
         <TextView
             android:id="@+id/doctor_description"
@@ -82,12 +81,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
+            android:maxLines="2"
             android:textColor="@color/blackTextColor"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
             app:layout_constraintTop_toTopOf="@+id/imageView8"
-            tools:text="TextView" />
+            tools:text="@string/dummy_long_text" />
 
         <ImageView
             android:id="@+id/imageView9"
@@ -96,7 +96,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:src="@drawable/ic_place"
             app:layout_constraintStart_toStartOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_description"
             app:tint="#02457A" />
 
 

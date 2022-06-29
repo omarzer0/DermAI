@@ -61,5 +61,5 @@ class HomeRepositoryImpl @Inject constructor(
 
     suspend fun getSearchHistory() = api.getSearchHistory(pref.token)
 
-    suspend fun getMedicines(diseaseId: Int) = api.getMedicines(diseaseId, pref.token)
+    suspend fun getMedicines(diseaseId: Int? = null) = api.getMedicines(diseaseId, pref.token)
 }

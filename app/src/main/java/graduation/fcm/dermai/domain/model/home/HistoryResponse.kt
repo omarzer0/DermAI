@@ -1,5 +1,6 @@
 package graduation.fcm.dermai.domain.model.home
 
+import com.google.gson.annotations.SerializedName
 import graduation.fcm.dermai.core.BaseResponse
 
 data class HistoryResponse(
@@ -7,6 +8,7 @@ data class HistoryResponse(
 ) : BaseResponse()
 
 data class HistoryData(
+    @SerializedName("results")
     val history: List<HistoryDisease>
 )
 
