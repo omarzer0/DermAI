@@ -49,7 +49,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private fun handleClicks() {
         binding.apply {
-            signUpTv.setOnClickListener { navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment()) }
+            signUpTv.setOnClickListener {
+                navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+//                navigate(LoginFragmentDirections.actionLoginFragmentToGenderFragment())
+            }
 
             loginBtn.setOnClickListener {
                 hideKeyboard()

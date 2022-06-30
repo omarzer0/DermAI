@@ -10,8 +10,6 @@ import graduation.fcm.dermai.data.remote.ApiService
 import graduation.fcm.dermai.di.ApplicationScope
 import graduation.fcm.dermai.domain.model.home.ScanResponse
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -23,7 +21,7 @@ class HomeRepositoryImpl @Inject constructor(
 ) {
 
     private val _imageResult: MutableLiveData<ResponseState<ScanResponse>> = MutableLiveData()
-    val imageResult :LiveData<ResponseState<ScanResponse>> = _imageResult
+    val imageResult: LiveData<ResponseState<ScanResponse>> = _imageResult
 
 
     fun fakeUploadImage(uri: Uri) {
@@ -62,4 +60,12 @@ class HomeRepositoryImpl @Inject constructor(
     suspend fun getSearchHistory() = api.getSearchHistory(pref.token)
 
     suspend fun getMedicines(diseaseId: Int? = null) = api.getMedicines(diseaseId, pref.token)
+
+    suspend fun deleteSingleSearchHistory(diseaseId: Int) =
+        api.deleteSingleSearchHistory(diseaseId, pref.token)
+
+    suspend fun updateUserInfo(skinColor: String, age: Int, gender: Int) =
+        api.updateUserInfo(skinColor, age, gender, pref.token)
+
+    suspend fun addToSearchHistory(diseaseId: Int) = api.addToSearchHistory(diseaseId, pref.token)
 }

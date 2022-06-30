@@ -17,11 +17,14 @@ data class Doctor(
     @SerializedName("about_me")
     val aboutMe: String,
     val location: String,
-    @SerializedName("veezeta_url")
-    val avatar_url: String,
+    val attachment: List<DoctorAttachment>,
     val contact_url: String,
     val feedback: Double,
     val price: Double,
     @SerializedName("qualification_name")
-    val qualificationName:String
+    val qualificationName: String
+)
+
+data class DoctorAttachment(
+    val path: String
 )

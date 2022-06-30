@@ -23,6 +23,12 @@ class SearchViewModel @Inject constructor(
         })
     }
 
+    fun deleteSingleSearchHistory(id: Int) {
+        networkCall({ repo.deleteSingleSearchHistory(id)},{
+            _searchHistoryResult.value = it
+        })
+    }
+
 
 }
 

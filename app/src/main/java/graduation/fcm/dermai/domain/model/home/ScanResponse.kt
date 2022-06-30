@@ -1,6 +1,7 @@
 package graduation.fcm.dermai.domain.model.home
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import graduation.fcm.dermai.core.BaseResponse
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
@@ -10,9 +11,10 @@ data class ScanResponse(
 ) : BaseResponse()
 
 data class ScanData(
-    val disease: List<Disease>?,
+//    val disease: List<Disease>?,
     val diseases: List<Disease>?,
-    val history: List<Disease>?,
+//    val history: List<Disease>?,
+//    val results: List<Disease>?,
     val result: Result?
 )
 
@@ -47,6 +49,7 @@ data class SearchResult(
 
 @Parcelize
 data class Attachment(
+    @SerializedName("path")
     val url: String? = ""
 ) : Parcelable
 

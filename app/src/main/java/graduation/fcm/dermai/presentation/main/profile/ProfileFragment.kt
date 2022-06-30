@@ -37,12 +37,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
             Log.e("ProfileFragment", "$it")
             binding.apply {
-                usernameTv.text = it.data.user.name
-                emailTv.text = it.data.user.email
-                setImageUsingGlide(userImageIv, it.data.user.avatar)
-                skinTypeTv.text = "Normal"
-                skinColorIv.setBackgroundColor(Color.parseColor("#E8BEAC"))
-                ageTv.text = "21"
+                val user = it.data.user
+                usernameTv.text = user.name
+                emailTv.text = user.email
+                genderTv.text = if(user.gender == 0) "Female" else "Male"
+                setImageUsingGlide(userImageIv, user.avatar)
+                skinColorIv.setBackgroundColor(Color.parseColor(user.skinColor))
+                ageTv.text = "${user.age}"
             }
         }
 

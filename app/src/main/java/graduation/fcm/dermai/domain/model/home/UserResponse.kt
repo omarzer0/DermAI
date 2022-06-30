@@ -12,10 +12,11 @@ data class UserData(
 )
 
 data class User(
-    val name: String,
-    val email: String,
-    val gender: String,
+    val name: String?,
+    val email: String?,
+    val gender: Int?,
     @SerializedName("skin_color")
     val skinColor: String?,
-    val avatar: String
+    val avatar: String?,
+    val age: Int?
 )

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import graduation.fcm.dermai.common.setImageUsingGlide
 import graduation.fcm.dermai.databinding.ItemDoctorBinding
 import graduation.fcm.dermai.domain.model.home.Doctor
-import kotlin.random.Random
 
 class DoctorAdapter :
     ListAdapter<Doctor, DoctorAdapter.DoctorViewHolder>(DiffCallback()) {
@@ -34,7 +33,9 @@ class DoctorAdapter :
         @SuppressLint("SetTextI18n")
         fun bind(currentItem: Doctor) {
             binding.apply {
-                setImageUsingGlide(doctorIv, currentItem.avatar_url)
+                val image =
+                    if (currentItem.attachment.isEmpty()) "" else currentItem.attachment[0].path
+                setImageUsingGlide(doctorIv, image)
                 doctorNameTv.text = currentItem.name
                 qualificationNameTv.text = currentItem.qualificationName
                 doctorDescription.text = currentItem.aboutMe

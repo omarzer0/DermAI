@@ -1,5 +1,6 @@
 package graduation.fcm.dermai.presentation.main.result
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -28,6 +29,11 @@ class ResultViewModel @Inject constructor(
     private val imgUrl = stateHandle.get<String>("imgUrl") ?: ""
     val shouldSave = fromScreen == SEARCH
 
+    fun addToSearchHistory(diseaseId: Int) {
+        Log.e("addToSearchHistory", "addToSearchHistory: isSearch: ${fromScreen == SEARCH}")
+        if (fromScreen != SEARCH) return
+        networkCall({ repo.addToSearchHistory(diseaseId) }, {})
+    }
 
     private val _scanResult = MutableLiveData<ResponseState<ScanResponse>>()
     val scanResult: LiveData<ResponseState<ScanResponse>> = _scanResult

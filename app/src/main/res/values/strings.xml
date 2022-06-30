@@ -51,4 +51,14 @@
     <string name="get">Get</string>
     <string name="category_2">Category 2</string>
     <string name="insert_data">Please insert you data blow</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="select_your_skin_color">Select Your Skin Color</string>
+    <string name="additional_details">Additional Details</string>
+    <string name="select_skin_type">Select Skin Type</string>
+    <string name="submit">Submit</string>
+    <string name="done">Done</string>
+    <string name="gender">Gender</string>
 </resources>

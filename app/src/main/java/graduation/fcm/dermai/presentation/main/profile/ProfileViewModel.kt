@@ -24,7 +24,7 @@ class ProfileViewModel @Inject constructor(
             _userResult.value = it
         }, errorResponse = {
             Log.e("TAG", "uploadDiseaseImage: error")
-            val errorResponse = UserResponse(UserData(User("", "", "", "", "")))
+            val errorResponse = UserResponse(UserData(User("", "", 1, "", "", 21)))
             errorResponse.error = it
             _userResult.value = errorResponse
         })

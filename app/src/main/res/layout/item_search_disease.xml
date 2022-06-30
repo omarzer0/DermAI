@@ -9,7 +9,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/disease_image_iv"
-        style="@style/roundShapeableImage"
+        style="@style/corneredShapeableImage"
         android:layout_width="@dimen/_48sdp"
         android:layout_height="@dimen/_48sdp"
         android:scaleType="fitXY"

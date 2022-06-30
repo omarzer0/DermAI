@@ -24,13 +24,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override val viewModel: SearchViewModel by viewModels()
     override fun selfHandleObserveState(): Boolean = false
 
-    private val searchHistoryAdapter = SearchHistoryAdapter {
+    private val searchHistoryAdapter = SearchHistoryAdapter(onSearchClick = {
         navigate(
             SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
                 it, false
             )
         )
-    }
+    }, onDeleteClick = {
+        Log.e("onSearchDelete", "onSearchDelete id $it" )
+        viewModel.deleteSingleSearchHistory(it)
+    })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,8 +57,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     val data = it.data?.data ?: return@observe
                     binding.textView3.show()
 
-                    val diseaseToUse =
-                        data.history ?: data.disease ?: data.diseases ?: return@observe
+                    val diseaseToUse = data.diseases ?: return@observe
 
                     val searchResults = diseaseToUse.map { disease ->
                         SearchResult(
@@ -88,6 +90,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
         binding.searchBar.sendSearchIconIv.setOnClickListener {
             val searchQuery = binding.searchBar.searchEt.text.toString().trim()
+            binding.searchBar.searchEt.setText("")
             navigate(
                 SearchFragmentDirections.actionSearchFragmentToResultFragment(
                     FromScreen.SEARCH,

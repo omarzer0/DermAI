@@ -12,7 +12,8 @@ import graduation.fcm.dermai.domain.model.home.Disease
 import graduation.fcm.dermai.domain.model.home.SearchResult
 
 class SearchHistoryAdapter(
-    val onSearchClick: (Disease) -> Unit
+    val onSearchClick: (Disease) -> Unit,
+    val onDeleteClick: (id: Int) -> Unit,
 ) :
     ListAdapter<SearchResult, SearchHistoryAdapter.SearchHistoryViewHolder>(DiffCallback()) {
 
@@ -36,11 +37,12 @@ class SearchHistoryAdapter(
             binding.root.setOnClickListener {
                 onSearchClick(getItem(adapterPosition).disease)
             }
+
+            binding.ivDeleteHistory.setOnClickListener { onDeleteClick(getItem(adapterPosition).id) }
         }
 
         fun bind(currentItem: SearchResult) {
             binding.apply {
-                Log.e("searchResults", "bind: $currentItem")
                 setImageUsingGlide(diseaseImageIv, currentItem.image)
                 diseaseNameTv.text = currentItem.name
             }

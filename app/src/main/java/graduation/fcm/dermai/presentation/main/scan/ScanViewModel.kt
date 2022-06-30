@@ -15,12 +15,7 @@ class ScanViewModel @Inject constructor(
     private val repo: HomeRepositoryImpl
 ) : BaseViewModel() {
 
-    fun fakeUploadImage(uri: Uri) {
-        repo.fakeUploadImage(uri)
-    }
-
     val currentImage = MutableLiveData<Uri>()
-
 
 }
 

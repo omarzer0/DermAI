@@ -43,7 +43,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<UserResponse>
 
-    @GET("v2/history")
+    @GET("v1/scan/history")
     suspend fun getScanHistory(
         @Header("Authorization") token: String
     ): Response<HistoryResponse>
@@ -55,9 +55,9 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<ScanResponse>
 
-    @GET("v1/scan/history/{diseaseId}")
+    @GET("v1/scan/history/{resultID}")
     suspend fun getSingleScanHistory(
-        @Path("diseaseId") diseaseId: Int,
+        @Path("resultID") diseaseId: Int,
         @Header("Authorization") token: String
     ): Response<ScanResponse>
 
@@ -91,4 +91,24 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<MedicineResponse>
 
+    @POST("v1/search/history/delete/{id}")
+    suspend fun deleteSingleSearchHistory(
+        @Path("id") id: Int,
+        @Header("Authorization") token: String
+    ): Response<ScanResponse>
+
+
+    @POST("v1/update_user_data")
+    suspend fun updateUserInfo(
+        @Query("skin_color") skinColor: String,
+        @Query("age") age: Int,
+        @Query("gender") gender: Int,
+        @Header("Authorization") token: String
+    ): Response<UserResponse>
+
+    @POST("v1/search/history/{diseaseID}")
+    suspend fun addToSearchHistory(
+        @Path("diseaseID") diseaseID: Int,
+        @Header("Authorization") token: String
+    ): Response<BaseResponse>
 }

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_bg">
+
+
+    <ImageView
+        android:id="@+id/iv_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:padding="@dimen/_4sdp"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/title__"
+        style="@style/headerTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/additional_details"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_back_btn" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/male_iv"
+        style="@style/roundShapeableImage"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:padding="@dimen/_4sdp"
+        android:src="@drawable/male"
+        app:layout_constraintEnd_toStartOf="@+id/female_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title__"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp" />
+
+    <TextView
+        android:id="@+id/male_tv"
+        style="@style/headerTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/male"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/male_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/male_iv"
+        app:layout_constraintTop_toBottomOf="@+id/male_iv" />
+
+    <TextView
+        android:id="@+id/female_tv"
+        style="@style/headerTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/female"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/female_iv"
+        app:layout_constraintStart_toStartOf="@+id/female_iv"
+        app:layout_constraintTop_toBottomOf="@+id/female_iv" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/female_iv"
+        style="@style/roundShapeableImage"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:padding="@dimen/_4sdp"
+        android:src="@drawable/female"
+        app:layout_constraintBottom_toBottomOf="@+id/male_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/male_iv"
+        app:layout_constraintTop_toTopOf="@+id/male_iv"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp" />
+
+
+    <EditText
+        android:id="@+id/age_ed"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_36sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@drawable/round_border"
+        android:inputType="number"
+        android:maxLength="3"
+        android:padding="@dimen/_8sdp"
+        android:hint="@string/enter_age"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/skin_color_root"
+        app:layout_constraintStart_toStartOf="@+id/skin_color_root"
+        app:layout_constraintTop_toBottomOf="@+id/skin_color_root" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/skin_color_root"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/round_border"
+        app:layout_constraintTop_toBottomOf="@+id/male_tv">
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/headerTextStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="@string/select_your_skin_color"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/skin_color_color_view"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView9"
+            tools:background="#e9c8bc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/skin_type_cl_root"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/_36sdp"-->
+    <!--        android:background="@drawable/round_border"-->
+    <!--        tools:layout_editor_absoluteX="10dp"-->
+    <!--        tools:layout_editor_absoluteY="217dp">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/skin_type_tv"-->
+    <!--            style="@style/headerTextStyleSmall"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="@dimen/_8sdp"-->
+    <!--            android:text="@string/select_skin_type"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/done_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
+        android:layout_marginBottom="@dimen/_36sdp"
+        android:background="@drawable/search_round_background"
+        android:backgroundTint="@color/mainColor"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_ed" />
+
+    <include
+        android:id="@+id/loading_pb_view"
+        layout="@layout/progress_bar_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,8 +63,10 @@
                 android:id="@+id/email_tv"
                 style="@style/bodyTextStyle"
                 android:layout_width="0dp"
+                android:gravity="end"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -97,12 +99,11 @@
             <TextView
                 android:id="@+id/age_tv"
                 style="@style/bodyTextStyle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="@+id/textView5"
                 tools:text="30" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,9 +135,9 @@
                 style="@style/bodyTextStyle"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView6"
                 tools:background="@color/black" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -161,22 +162,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
-                android:text="@string/skin_type__"
+                android:text="@string/gender"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/skin_type_tv"
+                android:id="@+id/gender_tv"
                 style="@style/bodyTextStyle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="@+id/textView7"
-                tools:text="Fatty" />
+                tools:text="Male" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -12,18 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-        <TextView
+        <ImageView
             android:id="@+id/app_name"
             style="@style/headerTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="#D6E8EE"
-            android:textSize="@dimen/_35ssp"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_100sdp"
             android:layout_marginTop="@dimen/_24sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/logo"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -39,7 +37,7 @@
                 android:layout_marginStart="@dimen/_4sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:text="@string/sign_up"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/mainColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +52,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:maxLines="1"
                 android:text="@string/insert_data"
-                android:textColor="@color/secondaryTextColor"
+                android:textColor="@color/mainColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +72,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv__2"
                 app:startIconDrawable="@drawable/ic_person"
-                app:startIconTint="@color/secondaryColor">
+                app:startIconTint="@color/mainColor">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/username_ed"
@@ -104,7 +102,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/username_container_cl"
                 app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/secondaryColor">
+                app:startIconTint="@color/mainColor">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email_ed"
@@ -130,13 +128,13 @@
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:textColorHint="@color/hintTextColor"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/secondaryColor"
+                app:endIconTint="@color/mainColor"
                 app:hintTextColor="@color/hintTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_container_cl"
                 app:startIconDrawable="@drawable/ic_lock"
-                app:startIconTint="@color/secondaryColor">
+                app:startIconTint="@color/mainColor">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password_ed"
@@ -163,13 +161,13 @@
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:textColorHint="@color/hintTextColor"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/secondaryColor"
+                app:endIconTint="@color/mainColor"
                 app:hintTextColor="@color/hintTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_container_cl"
                 app:startIconDrawable="@drawable/ic_lock"
-                app:startIconTint="@color/secondaryColor">
+                app:startIconTint="@color/mainColor">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/confirm_password_ed"
@@ -193,7 +191,7 @@
                 android:layout_marginStart="@dimen/_32sdp"
                 android:layout_marginEnd="@dimen/_32sdp"
                 android:background="@drawable/search_round_background"
-                android:backgroundTint="@color/secondaryColor"
+                android:backgroundTint="@color/mainColor"
                 android:text="@string/sign_up"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -226,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:text="@string/login"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/mainColor"
                 android:textSize="@dimen/_12ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"

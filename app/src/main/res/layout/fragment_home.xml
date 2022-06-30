@@ -52,6 +52,7 @@
             android:layout_height="@dimen/_100sdp"
             android:layout_margin="@dimen/_12sdp"
             android:visibility="visible"
+            android:backgroundTint="@color/mainColor"
             android:background="@drawable/shape_circular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             android:text="@string/start_new_case"
-            android:textColor="@color/secondaryColor"
+            android:textColor="@color/mainColor"
             app:layout_constraintEnd_toEndOf="@+id/goToScanView"
             app:layout_constraintStart_toStartOf="@+id/goToScanView"
             app:layout_constraintTop_toBottomOf="@+id/goToScanView" />

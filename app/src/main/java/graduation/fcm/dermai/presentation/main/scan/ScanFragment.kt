@@ -53,7 +53,6 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
         binding.uploadImageIv.setOnClickListener {
             val uri = viewModel.currentImage.value ?: return@setOnClickListener
             sharedPreferenceManger.imageUri = uri.toString()
-            viewModel.fakeUploadImage(uri)
             navigate(ScanFragmentDirections.actionScanFragmentToQuestionsFragment())
         }
     }

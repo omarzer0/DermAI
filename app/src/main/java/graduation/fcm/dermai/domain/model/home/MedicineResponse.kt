@@ -9,12 +9,7 @@ data class MedicineResponse(
 
 data class MedicineData(
     @SerializedName("medicines")
-    val medicines: List<Medicine>
-
-//    @SerializedName("medicines")
-//    val diseaseMedicines: List<Medicine>,
-//    @SerializedName("medicines")
-//    val categoryMedicines: List<Medicine>
+    val medicines: List<Medicine>,
 )
 
 data class Medicine(
@@ -23,9 +18,11 @@ data class Medicine(
     @SerializedName("image")
     val rating: Double,
     val price: Double,
-//    @SerializedName("image_url")
-//    val imageUrl: String,
+    val attachment :List<MedicineAttachment>,
     @SerializedName("order_url")
-    val orderUrl: String,
-    val attachment: List<Attachment>
+    val orderUrl: String
+)
+
+data class MedicineAttachment(
+    val path: String?
 )

@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             android:background="@drawable/shape_rounded_bottom"
-            android:backgroundTint="#018ABE"
+            android:backgroundTint="@color/mainColor"
             android:text="@string/get"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
