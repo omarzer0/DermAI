@@ -24,5 +24,6 @@ data class Medicine(
 )
 
 data class MedicineAttachment(
+    @SerializedName("url")
     val path: String?
 )

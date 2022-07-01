@@ -20,22 +20,9 @@ class HomeRepositoryImpl @Inject constructor(
     @ApplicationScope private val scope: CoroutineScope
 ) {
 
-    private val _imageResult: MutableLiveData<ResponseState<ScanResponse>> = MutableLiveData()
-    val imageResult: LiveData<ResponseState<ScanResponse>> = _imageResult
-
-
-    fun fakeUploadImage(uri: Uri) {
-        val img = getImageAsMultipartBodyPart(app, uri, IMAGE_SEND_KEY)
-        networkCallGlobal(scope, { api.uploadFakeDiseaseImage(img, pref.token) }, {
-            Log.e("ObserveFakeData", "repo: $it")
-            _imageResult.postValue(it)
-        })
-    }
-
     suspend fun uploadDiseaseImage(uriString: String): Response<ScanResponse> {
         val uri = Uri.parse(uriString)
         val img = getImageAsMultipartBodyPart(app, uri, IMAGE_SEND_KEY)
-        Log.e("TAG", "uploadDiseaseImage: img=$img\nuri=$uri")
         return api.uploadDiseaseImage(img, pref.token)
     }
 

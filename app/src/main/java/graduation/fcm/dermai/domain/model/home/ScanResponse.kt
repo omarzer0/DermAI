@@ -49,7 +49,6 @@ data class SearchResult(
 
 @Parcelize
 data class Attachment(
-    @SerializedName("path")
     val url: String? = ""
 ) : Parcelable
 
