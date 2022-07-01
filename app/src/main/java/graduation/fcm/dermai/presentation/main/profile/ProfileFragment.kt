@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import graduation.fcm.dermai.R
 import graduation.fcm.dermai.common.setImageUsingGlide
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentProfileBinding
@@ -40,8 +41,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 val user = it.data.user
                 usernameTv.text = user.name
                 emailTv.text = user.email
-                genderTv.text = if(user.gender == 0) "Female" else "Male"
-                setImageUsingGlide(userImageIv, user.avatar)
+                genderTv.text = if (user.gender == 0) "Female" else "Male"
+                setImageUsingGlide(
+                    userImageIv,
+                    user.avatar ?: if (user.gender == 0) R.drawable.female else R.drawable.male
+                )
                 skinColorIv.setBackgroundColor(Color.parseColor(user.skinColor))
                 ageTv.text = "${user.age}"
             }

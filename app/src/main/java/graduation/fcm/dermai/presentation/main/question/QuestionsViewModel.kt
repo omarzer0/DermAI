@@ -56,7 +56,7 @@ data class QuestionsState(
             Question(
                 "q1",
                 "Does your skin appear normal and healthy?",
-                listOf("yes", "no"),
+                listOf("Yes", "No"),
                 QuestionType.POLAR
             )
         ) //0
@@ -80,7 +80,7 @@ data class QuestionsState(
             Question(
                 "q4",
                 "Do you need to itch?",
-                listOf("yes", "no"),
+                listOf("Yes", "No"),
                 QuestionType.POLAR
             )
         )//3
@@ -89,7 +89,7 @@ data class QuestionsState(
             Question(
                 "q5",
                 "Do you have a fever?",
-                listOf("yes", "no"),
+                listOf("Yes", "No"),
                 QuestionType.POLAR
             )
         )
