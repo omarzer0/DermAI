@@ -69,11 +69,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                         )
                     }
 
-                    Log.e("searchResults", "searchResults: $searchResults")
                     if (searchResults.isEmpty()) binding.textView3.gone()
                     else binding.textView3.show()
-
                     searchHistoryAdapter.submitList(searchResults)
+
                 }
             }
         }

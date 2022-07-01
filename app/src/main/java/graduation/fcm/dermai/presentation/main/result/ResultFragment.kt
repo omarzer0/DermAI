@@ -49,11 +49,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
     }
 
     private fun observeData() {
-        Log.e("ObserveFakeData", "fragment out:")
-        viewModel.getFakeImageResult().observe(viewLifecycleOwner){
-            Log.e("ObserveFakeData", "fragment in: $it")
-        }
-
         viewModel.scanResult.observe(viewLifecycleOwner) {
             when (it) {
                 is ResponseState.Error -> {
