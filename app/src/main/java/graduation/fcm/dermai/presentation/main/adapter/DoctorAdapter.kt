@@ -1,5 +1,6 @@
 package graduation.fcm.dermai.presentation.main.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -29,12 +30,15 @@ class DoctorAdapter :
     inner class DoctorViewHolder(val binding: ItemDoctorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(currentItem: Doctor) {
             binding.apply {
-                setImageUsingGlide(doctorIv, currentItem.avatar_url)
+                val image =
+                    if (currentItem.attachment.isEmpty()) "" else currentItem.attachment[0].path
+                setImageUsingGlide(doctorIv, image)
                 doctorNameTv.text = currentItem.name
-                moreDescriptionTv.text = currentItem.specialization
-                doctorDescription.text = currentItem.specialization
+                qualificationNameTv.text = currentItem.qualificationName
+                doctorDescription.text = currentItem.aboutMe
                 doctorLocation.text = currentItem.location
                 doctorPrice.text = "${currentItem.price} EGP"
                 try {

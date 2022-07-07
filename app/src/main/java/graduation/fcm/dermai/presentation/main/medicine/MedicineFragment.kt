@@ -54,8 +54,8 @@ class MedicineFragment : BaseFragment<FragmentMedicineBinding>() {
                     binding.successGroup.show()
 
                     Log.e("TAGMedicineFragment", "observeData: $data")
-                    category1Adapter.submitList(data.diseaseMedicines)
-                    category2Adapter.submitList(data.categoryMedicines)
+                    category1Adapter.submitList(data.medicines)
+                    category2Adapter.submitList(data.medicines.reversed())
                 }
             }
         }

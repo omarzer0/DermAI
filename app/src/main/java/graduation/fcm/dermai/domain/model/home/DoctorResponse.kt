@@ -1,5 +1,6 @@
 package graduation.fcm.dermai.domain.model.home
 
+import com.google.gson.annotations.SerializedName
 import graduation.fcm.dermai.core.BaseResponse
 
 data class DoctorResponse(
@@ -13,10 +14,18 @@ data class DoctorData(
 data class Doctor(
     val id: Int,
     val name: String,
-    val specialization: String,
+    @SerializedName("about_me")
+    val aboutMe: String,
     val location: String,
-    val avatar_url: String,
+    val attachment: List<DoctorAttachment>,
     val contact_url: String,
     val feedback: Double,
     val price: Double,
+    @SerializedName("qualification_name")
+    val qualificationName: String
+)
+
+data class DoctorAttachment(
+    @SerializedName("url")
+    val path: String
 )

@@ -24,7 +24,8 @@
             android:name=".presentation.auth.AuthActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AuthActivityTheme" />
+            android:theme="@style/AuthActivityTheme"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true"

@@ -1,6 +1,7 @@
 package graduation.fcm.dermai.presentation.main.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.core.BaseFragment
 import graduation.fcm.dermai.databinding.FragmentHomeBinding
 import graduation.fcm.dermai.presentation.main.adapter.HistoryAdapter
+import graduation.fcm.dermai.presentation.main.adapter.MedicineAdapter
 import graduation.fcm.dermai.presentation.main.utils.FromScreen
 
 @AndroidEntryPoint
@@ -21,6 +23,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun selfHandleObserveState(): Boolean = false
     override fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(inflater, container, false)
+
+    private val medicinesAdapter = MedicineAdapter()
 
     private val historyAdapter = HistoryAdapter { diseaseId ->
         val action = HomeFragmentDirections.actionHomeFragmentToResultFragment(
@@ -32,9 +36,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         navigate(action)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getScanHistory()
+        viewModel.getMedicine()
         handleClicks()
         setUpRv()
         observeData()
@@ -72,16 +78,49 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
 
+
+        viewModel.medicineResult.observe(viewLifecycleOwner) {
+            when (it) {
+                is ResponseState.Error -> {
+                    if (it.hasBeenHandled) return@observe
+
+                    it.hasBeenHandled = true
+                    it.message?.let { msg -> toastMy(msg) }
+                    binding.medicineRv.gone()
+                    binding.tvMedicine.gone()
+                }
+                is ResponseState.Loading -> {}
+
+                is ResponseState.NotAuthorized -> {
+                    logOut()
+                }
+                is ResponseState.Success -> {
+                    binding.medicineRv.show()
+                    binding.tvMedicine.show()
+                    val medicinesResponse = it.data ?: return@observe
+                    val medicinesList = medicinesResponse.data.medicines
+                    if (medicinesList.isEmpty()) {
+                        binding.medicineRv.gone()
+                        binding.tvMedicine.gone()
+                    }
+
+                    medicinesAdapter.submitList(medicinesList)
+                }
+            }
+        }
+
     }
 
     private fun setUpRv() {
-        binding.historyRv.adapter = historyAdapter
+        binding.apply {
+            historyRv.adapter = historyAdapter
+            medicineRv.adapter = medicinesAdapter
+        }
     }
 
     private fun handleClicks() {
         binding.apply {
-//            newCaseCv.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
-            goToScanBtn.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
+            goToScanView.setOnClickListener { navigate(HomeFragmentDirections.actionHomeFragmentToScanFragment()) }
         }
     }
 

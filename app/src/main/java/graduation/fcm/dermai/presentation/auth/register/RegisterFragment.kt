@@ -38,8 +38,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             }
             Log.e("observeData", "observeData: $it")
             sharedPreferenceManger.token = it.data.token
-            sharedPreferenceManger.hasLoggedIn = true
-            navigateToHomeActivity()
+            navigate(RegisterFragmentDirections.actionRegisterFragmentToGenderFragment())
         }
     }
 

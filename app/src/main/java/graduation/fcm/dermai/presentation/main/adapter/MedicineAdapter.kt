@@ -31,7 +31,9 @@ class MedicineAdapter :
 
         fun bind(currentItem: Medicine) {
             binding.apply {
-                setImageUsingGlide(medicineIv, currentItem.imageUrl)
+                val attachment =
+                    if (currentItem.attachment.isEmpty()) "" else currentItem.attachment[0].path
+                setImageUsingGlide(medicineIv, attachment)
                 medicineNameTv.text = currentItem.name
                 priceTv.text = "${currentItem.price} EGP"
                 try {

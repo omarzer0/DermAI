@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import graduation.fcm.dermai.common.extentions.gone
 import graduation.fcm.dermai.common.extentions.hide
-import graduation.fcm.dermai.common.extentions.show
 import graduation.fcm.dermai.databinding.ItemResultDiseaseBinding
 import graduation.fcm.dermai.domain.model.home.Disease
 import graduation.fcm.dermai.domain.model.home.DiseaseWithResult
 
 class ResultAdapter(
     val onConfirmClick: (resultID: Int, diseaseID: Int) -> Unit,
-    val onMoreClick: (disease: Disease) -> Unit
+    val onClick: (disease: Disease) -> Unit
 ) :
     ListAdapter<DiseaseWithResult, ResultAdapter.ResultViewHolder>(DiffCallback()) {
 
@@ -44,7 +42,7 @@ class ResultAdapter(
                 }
             }
 
-            binding.tvMoreDetails.setOnClickListener { onMoreClick(getItem(adapterPosition).disease) }
+            binding.root.setOnClickListener { onClick(getItem(adapterPosition).disease) }
         }
 
         fun bind(currentItem: DiseaseWithResult) {

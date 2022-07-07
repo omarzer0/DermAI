@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dermai</string>
+    <string name="app_name">DermAI</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="profile">Profile</string>
@@ -36,6 +36,7 @@
     <string name="section__">Section:</string>
     <string name="dummy_long_text">fasf safj afjsd iojfa dsjfi asdfijdsif jdiasd fisidf jdisofj sdijfpasdjf isdfjpdsjfiasdj dijf dtuja8rth dscnfdsfuedth yhsfgjasdphfbanpdfhau pyhr [ajsg</string>
     <string name="get_medicines">Get Medicines</string>
+    <string name="medicines">Medicines</string>
     <string name="get_a_doctor">Get a Doctor</string>
     <string name="start">Start</string>
     <string name="logout">Logout</string>
@@ -49,4 +50,15 @@
     <string name="category_1">Category 1</string>
     <string name="get">Get</string>
     <string name="category_2">Category 2</string>
+    <string name="insert_data">Please insert you data blow</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="select_your_skin_color">Select Your Skin Color</string>
+    <string name="additional_details">Additional Details</string>
+    <string name="select_skin_type">Select Skin Type</string>
+    <string name="submit">Submit</string>
+    <string name="done">Done</string>
+    <string name="gender">Gender</string>
 </resources>

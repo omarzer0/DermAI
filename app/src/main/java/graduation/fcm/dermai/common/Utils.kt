@@ -64,7 +64,19 @@ fun getShimmerDrawable(): ShimmerDrawable {
     }
 }
 
-fun setImageUsingGlide(view: ImageView, imageUrl: String?) {
+//fun setImageUsingGlide(view: ImageView, imageUrl: String?) {
+//    try {
+//        Glide.with(view.context)
+//            .load(imageUrl)
+//            .placeholder(getShimmerDrawable())
+//            .error(R.drawable.ic_no_image)
+//            .into(view)
+//    } catch (e: Exception) {
+//        Log.e("Utils glide", "setImageUsingGlide ${e.localizedMessage}")
+//    }
+//}
+
+fun setImageUsingGlide(view: ImageView, imageUrl: Any?) {
     try {
         Glide.with(view.context)
             .load(imageUrl)

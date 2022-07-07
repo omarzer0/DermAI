@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/search_round_background_with_border"
     android:elevation="@dimen/_6sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import graduation.fcm.dermai.R
 import graduation.fcm.dermai.common.*
@@ -27,29 +28,31 @@ class ScanFragment : BaseFragment<FragmentScanBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         handleClicks()
-
         observeData()
 
+    }
+
+    private fun initViews() {
+        Glide.with(this).asGif().load(R.raw.scan).into(binding.uploadImageIv);
     }
 
     private fun observeData() {
         viewModel.currentImage.observe(viewLifecycleOwner) {
             setImageUsingGlide(binding.chosenImageIv, it.toString())
-            binding.uploadImageBtn.show()
-            binding.takeImageBtn.text = getString(R.string.select_another_image)
+            binding.uploadImageIv.show()
         }
     }
 
     private fun handleClicks() {
-        binding.takeImageBtn.setOnClickListener {
+        binding.takeImageIv.setOnClickListener {
             checkMyPermissions()
         }
 
-        binding.uploadImageBtn.setOnClickListener {
+        binding.uploadImageIv.setOnClickListener {
             val uri = viewModel.currentImage.value ?: return@setOnClickListener
             sharedPreferenceManger.imageUri = uri.toString()
-            viewModel.fakeUploadImage(uri)
             navigate(ScanFragmentDirections.actionScanFragmentToQuestionsFragment())
         }
     }
